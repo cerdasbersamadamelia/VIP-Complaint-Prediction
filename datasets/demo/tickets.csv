@@ -1,0 +1,101 @@
+ticket_id,timestamp,customer_id,vip,site_id,category_label,text,severity_reported
+TCK_0,9/1/2025 1:00,CUST_101,1,SITE_1,Internet Lag,Internet lemot parah,high
+TCK_1,9/1/2025 2:00,CUST_102,1,SITE_2,Coverage / Sinyal,Sinyal hilang di area,medium
+TCK_2,9/1/2025 2:30,CUST_103,1,SITE_3,WA Call Issue,WA call putus-putus,medium
+TCK_3,9/1/2025 3:00,CUST_104,1,SITE_4,Voice Call Issue,Nelpon sering putus,high
+TCK_4,9/1/2025 3:30,CUST_105,1,SITE_5,SMS Issue,SMS tidak terkirim,medium
+TCK_5,9/1/2025 4:00,CUST_106,1,SITE_1,Gaming Lag,Game lag berat,high
+TCK_6,9/1/2025 4:30,CUST_107,1,SITE_2,Internet Lag,Internet lemot di pagi hari,medium
+TCK_7,9/1/2025 5:00,CUST_108,1,SITE_3,Coverage / Sinyal,Sinyal drop di gedung,medium
+TCK_8,9/1/2025 5:30,CUST_109,1,SITE_4,WA Call Issue,WA reconnecting terus,medium
+TCK_9,9/1/2025 6:00,CUST_110,1,SITE_5,Voice Call Issue,Tidak bisa nelpon,high
+TCK_10,9/1/2025 6:30,CUST_111,1,SITE_1,Internet Lag,Internet lemot siang,high
+TCK_11,9/1/2025 7:00,CUST_112,1,SITE_2,Coverage / Sinyal,Sinyal drop di basement,medium
+TCK_12,9/1/2025 7:30,CUST_113,1,SITE_3,WA Call Issue,WA call gagal,medium
+TCK_13,9/1/2025 8:00,CUST_114,1,SITE_4,Voice Call Issue,Nelpon tidak tersambung,high
+TCK_14,9/1/2025 8:30,CUST_115,1,SITE_5,SMS Issue,SMS delay,medium
+TCK_15,9/1/2025 9:00,CUST_116,1,SITE_1,Gaming Lag,Game disconnect,high
+TCK_16,9/1/2025 9:30,CUST_117,1,SITE_2,Internet Lag,Internet lambat sore,medium
+TCK_17,9/1/2025 10:00,CUST_118,1,SITE_3,Coverage / Sinyal,Sinyal lemah,medium
+TCK_18,9/1/2025 10:30,CUST_119,1,SITE_4,WA Call Issue,WA call tidak stabil,medium
+TCK_19,9/1/2025 11:00,CUST_120,1,SITE_5,Voice Call Issue,Sering gagal nelpon,high
+TCK_20,9/1/2025 12:15,CUST_121,1,SITE_1,Internet Lag,Internet lemot siang,high
+TCK_21,9/1/2025 12:30,CUST_122,1,SITE_2,Coverage / Sinyal,Sinyal drop di basement,medium
+TCK_22,9/1/2025 12:45,CUST_123,1,SITE_3,WA Call Issue,WA call gagal,medium
+TCK_23,9/1/2025 13:00,CUST_124,1,SITE_4,Voice Call Issue,Nelpon tidak tersambung,high
+TCK_24,9/1/2025 13:15,CUST_125,1,SITE_5,SMS Issue,SMS delay,medium
+TCK_25,9/1/2025 13:30,CUST_126,1,SITE_1,Gaming Lag,Game disconnect,high
+TCK_26,9/1/2025 13:45,CUST_127,1,SITE_2,Internet Lag,Internet lambat sore,medium
+TCK_27,9/1/2025 14:00,CUST_128,1,SITE_3,Coverage / Sinyal,Sinyal lemah,medium
+TCK_28,9/1/2025 14:15,CUST_129,1,SITE_4,WA Call Issue,WA call tidak stabil,medium
+TCK_29,9/1/2025 14:30,CUST_130,1,SITE_5,Voice Call Issue,Sering gagal nelpon,high
+TCK_30,9/1/2025 14:45,CUST_131,1,SITE_1,Internet Lag,Internet lemot parah,high
+TCK_31,9/1/2025 15:00,CUST_132,1,SITE_2,Coverage / Sinyal,Sinyal hilang di area,medium
+TCK_32,9/1/2025 15:15,CUST_133,1,SITE_3,WA Call Issue,WA call putus-putus,medium
+TCK_33,9/1/2025 15:30,CUST_134,1,SITE_4,Voice Call Issue,Nelpon sering putus,high
+TCK_34,9/1/2025 15:45,CUST_135,1,SITE_5,SMS Issue,SMS tidak terkirim,medium
+TCK_35,9/1/2025 16:00,CUST_136,1,SITE_1,Gaming Lag,Game lag berat,high
+TCK_36,9/1/2025 16:15,CUST_137,1,SITE_2,Internet Lag,Internet lemot di pagi hari,medium
+TCK_37,9/1/2025 16:30,CUST_138,1,SITE_3,Coverage / Sinyal,Sinyal drop di gedung,medium
+TCK_38,9/1/2025 16:45,CUST_139,1,SITE_4,WA Call Issue,WA reconnecting terus,medium
+TCK_39,9/1/2025 17:00,CUST_140,1,SITE_5,Voice Call Issue,Tidak bisa nelpon,high
+TCK_40,9/1/2025 17:15,CUST_141,1,SITE_1,Internet Lag,Internet lemot siang,high
+TCK_41,9/1/2025 17:30,CUST_142,1,SITE_2,Coverage / Sinyal,Sinyal drop di basement,medium
+TCK_42,9/1/2025 17:45,CUST_143,1,SITE_3,WA Call Issue,WA call gagal,medium
+TCK_43,9/1/2025 18:00,CUST_144,1,SITE_4,Voice Call Issue,Nelpon tidak tersambung,high
+TCK_44,9/1/2025 18:15,CUST_145,1,SITE_5,SMS Issue,SMS delay,medium
+TCK_45,9/1/2025 18:30,CUST_146,1,SITE_1,Gaming Lag,Game disconnect,high
+TCK_46,9/1/2025 18:45,CUST_147,1,SITE_2,Internet Lag,Internet lambat sore,medium
+TCK_47,9/1/2025 19:00,CUST_148,1,SITE_3,Coverage / Sinyal,Sinyal lemah,medium
+TCK_48,9/1/2025 19:15,CUST_149,1,SITE_4,WA Call Issue,WA call tidak stabil,medium
+TCK_49,9/1/2025 19:30,CUST_150,1,SITE_5,Voice Call Issue,Sering gagal nelpon,high
+TCK_50,9/1/2025 19:45,CUST_151,1,SITE_1,Internet Lag,Internet lemot parah,high
+TCK_51,9/1/2025 20:00,CUST_152,1,SITE_2,Coverage / Sinyal,Sinyal hilang di area,medium
+TCK_52,9/1/2025 20:15,CUST_153,1,SITE_3,WA Call Issue,WA call putus-putus,medium
+TCK_53,9/1/2025 20:30,CUST_154,1,SITE_4,Voice Call Issue,Nelpon sering putus,high
+TCK_54,9/1/2025 20:45,CUST_155,1,SITE_5,SMS Issue,SMS tidak terkirim,medium
+TCK_55,9/1/2025 21:00,CUST_156,1,SITE_1,Gaming Lag,Game lag berat,high
+TCK_56,9/1/2025 21:15,CUST_157,1,SITE_2,Internet Lag,Internet lemot di pagi hari,medium
+TCK_57,9/1/2025 21:30,CUST_158,1,SITE_3,Coverage / Sinyal,Sinyal drop di gedung,medium
+TCK_58,9/1/2025 21:45,CUST_159,1,SITE_4,WA Call Issue,WA reconnecting terus,medium
+TCK_59,9/1/2025 22:00,CUST_160,1,SITE_5,Voice Call Issue,Tidak bisa nelpon,high
+TCK_60,9/1/2025 22:15,CUST_161,1,SITE_1,Internet Lag,Internet lemot siang,high
+TCK_61,9/1/2025 22:30,CUST_162,1,SITE_2,Coverage / Sinyal,Sinyal drop di basement,medium
+TCK_62,9/1/2025 22:45,CUST_163,1,SITE_3,WA Call Issue,WA call gagal,medium
+TCK_63,9/1/2025 23:00,CUST_164,1,SITE_4,Voice Call Issue,Nelpon tidak tersambung,high
+TCK_64,9/1/2025 23:15,CUST_165,1,SITE_5,SMS Issue,SMS delay,medium
+TCK_65,9/1/2025 23:30,CUST_166,1,SITE_1,Gaming Lag,Game disconnect,high
+TCK_66,9/1/2025 23:45,CUST_167,1,SITE_2,Internet Lag,Internet lambat sore,medium
+TCK_67,9/2/2025 0:00,CUST_168,1,SITE_3,Coverage / Sinyal,Sinyal lemah,medium
+TCK_68,9/2/2025 0:15,CUST_169,1,SITE_4,WA Call Issue,WA call tidak stabil,medium
+TCK_69,9/2/2025 0:30,CUST_170,1,SITE_5,Voice Call Issue,Sering gagal nelpon,high
+TCK_70,9/2/2025 0:45,CUST_171,1,SITE_1,Internet Lag,Internet lemot parah,high
+TCK_71,9/2/2025 1:00,CUST_172,1,SITE_2,Coverage / Sinyal,Sinyal hilang di area,medium
+TCK_72,9/2/2025 1:15,CUST_173,1,SITE_3,WA Call Issue,WA call putus-putus,medium
+TCK_73,9/2/2025 1:30,CUST_174,1,SITE_4,Voice Call Issue,Nelpon sering putus,high
+TCK_74,9/2/2025 1:45,CUST_175,1,SITE_5,SMS Issue,SMS tidak terkirim,medium
+TCK_75,9/2/2025 2:00,CUST_176,1,SITE_1,Gaming Lag,Game lag berat,high
+TCK_76,9/2/2025 2:15,CUST_177,1,SITE_2,Internet Lag,Internet lemot di pagi hari,medium
+TCK_77,9/2/2025 2:30,CUST_178,1,SITE_3,Coverage / Sinyal,Sinyal drop di gedung,medium
+TCK_78,9/2/2025 2:45,CUST_179,1,SITE_4,WA Call Issue,WA reconnecting terus,medium
+TCK_79,9/2/2025 3:00,CUST_180,1,SITE_5,Voice Call Issue,Tidak bisa nelpon,high
+TCK_80,9/2/2025 3:15,CUST_181,1,SITE_1,Internet Lag,Internet lemot siang,high
+TCK_81,9/2/2025 3:30,CUST_182,1,SITE_2,Coverage / Sinyal,Sinyal drop di basement,medium
+TCK_82,9/2/2025 3:45,CUST_183,1,SITE_3,WA Call Issue,WA call gagal,medium
+TCK_83,9/2/2025 4:00,CUST_184,1,SITE_4,Voice Call Issue,Nelpon tidak tersambung,high
+TCK_84,9/2/2025 4:15,CUST_185,1,SITE_5,SMS Issue,SMS delay,medium
+TCK_85,9/2/2025 4:30,CUST_186,1,SITE_1,Gaming Lag,Game disconnect,high
+TCK_86,9/2/2025 4:45,CUST_187,1,SITE_2,Internet Lag,Internet lambat sore,medium
+TCK_87,9/2/2025 5:00,CUST_188,1,SITE_3,Coverage / Sinyal,Sinyal lemah,medium
+TCK_88,9/2/2025 5:15,CUST_189,1,SITE_4,WA Call Issue,WA call tidak stabil,medium
+TCK_89,9/2/2025 5:30,CUST_190,1,SITE_5,Voice Call Issue,Sering gagal nelpon,high
+TCK_90,9/2/2025 5:45,CUST_191,1,SITE_1,Internet Lag,Internet lemot parah,high
+TCK_91,9/2/2025 6:00,CUST_192,1,SITE_2,Coverage / Sinyal,Sinyal hilang di area,medium
+TCK_92,9/1/2025 6:15,CUST_193,1,SITE_3,WA Call Issue,WA call putus-putus,medium
+TCK_93,9/2/2025 6:30,CUST_194,1,SITE_4,Voice Call Issue,Nelpon sering putus,high
+TCK_94,9/2/2025 6:45,CUST_195,1,SITE_5,SMS Issue,SMS tidak terkirim,medium
+TCK_95,9/2/2025 7:00,CUST_196,1,SITE_1,Gaming Lag,Game lag berat,high
+TCK_96,9/2/2025 7:15,CUST_197,1,SITE_2,Internet Lag,Internet lemot di pagi hari,medium
+TCK_97,9/2/2025 7:30,CUST_198,1,SITE_3,Coverage / Sinyal,Sinyal drop di gedung,medium
+TCK_98,9/2/2025 7:45,CUST_199,1,SITE_4,WA Call Issue,WA reconnecting terus,medium
+TCK_99,9/2/2025 8:00,CUST_200,1,SITE_5,Voice Call Issue,Tidak bisa nelpon,high
