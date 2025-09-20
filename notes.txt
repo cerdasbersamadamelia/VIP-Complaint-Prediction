@@ -398,9 +398,13 @@ Model	Accuracy	Precision	Recall	F1 Score
 
 ### 3. **Categorical / Qualitative** – untuk data kategori
 
-* `px.colors.qualitative.Safe`
+* `px.colors.qualitative.Safe` /
 * `px.colors.qualitative.Bold`
-* `px.colors.qualitative.Set1`
-* `px.colors.qualitative.Set2`
+* `px.colors.qualitative.Set1` /
+* `px.colors.qualitative.Set2` /
 * `px.colors.qualitative.D3`
 * `px.colors.qualitative.Dark24`
+
+------------------------------------------------------------------------------------------
+
+AI-powered system predicting VIP network complaints by analyzing KPI timeseries, alarms, tickets, topology, events, and weather data, enabling proactive root-cause detection and service optimization for telecom networks.
