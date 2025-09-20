@@ -44,4 +44,4 @@ Map prediction results to potential root causes:
 - ✅ Scalable to **all customer complaints**, not just VIP.  
 
 ### 🔗 Try the Demo
-<a href="https://vip-complaint-prediction.streamlit.app/" target="_blank">Streamlit App</a>
+[Streamlit App](https://vip-complaint-prediction.streamlit.app/)
