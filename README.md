@@ -13,8 +13,8 @@ Problem: **delayed response**. Impact: contracts may incur penalties, customer t
 3. **Prioritization Alert** → send early warning notifications to the Network Engineer team.
 
 ### 🔑 Inputs (X – Features)
-* **Radio KPIs**: RSRP, RSRQ, SINR, PRB DL/UL, Max/Active users, UL interference, HO success rate, CSSR.  
-* **Core & Transport KPIs**: Packet loss, latency, CPRI/VSWR alarms, TNL availability.  
+* **Radio KPIs**: Availability, RSRP, RSRQ, SINR, PRB DL/UL, Max/Active users, UL interference, HO success rate, CSSR.  
+* **Core & Transport KPIs**: Packet loss, latency, CPRI/VSWR alarms.  
 * **Service-Specific KPIs**: WhatsApp success ratio, VoLTE drop rate, SMS success ratio, Gaming latency.  
 * **Events/External**: Maintenance schedules, concerts, national events, weather conditions.
 
