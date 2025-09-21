@@ -347,7 +347,7 @@ X_train2, X_test2, y_train2, y_test2 = train_test_split(
 model_level1 = joblib.load("models/level1/XGB_Level1.pkl")
 
 # Load Level 2 model (Multiclass)
-model_level2 = joblib.load("models/level1/Random_Forest_Level2.pkl")
+model_level2 = joblib.load("models/level2/Random_Forest_Level2.pkl")
 
 # Load saved label encoders
 le_site_id = joblib.load("encoder/le_site_id.pkl")
