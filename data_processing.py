@@ -427,7 +427,7 @@ def level3_recommendation(row):
 
 results = []
 
-for index, row in X_new.iterrows():
+for index, row in X.iterrows():
     # Level 1: Predict if site will have a complaint in next 24h
     pred_24h = model_level1.predict([row])[0]
 
@@ -483,9 +483,9 @@ results_df["antenna_type"] = le_antenna_type.inverse_transform(results_df["anten
 # weather
 results_df["weather"] = le_weather.inverse_transform(results_df["weather"].astype(int))
 # event_type
-event_cols = [c for c in X_new.columns if c.startswith("type_")]
+event_cols = [c for c in X.columns if c.startswith("type_")]
 if event_cols:
-    decoded_type = ohe_events.inverse_transform(X_new[event_cols].values)
+    decoded_type = ohe_events.inverse_transform(X[event_cols].values)
     results_df["event_type"] = decoded_type.ravel() # flatten 2D -> 1D
 
 
