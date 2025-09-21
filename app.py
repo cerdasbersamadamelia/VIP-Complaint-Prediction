@@ -341,9 +341,12 @@ with row4[1]:
 
             # Sub root cause for most affected site
             if most_affected_site != "N/A" and 'sub_root_cause' in filtered_df.columns:
-                scatter_mapbox
-                sub_counts = filtered_df.loc[filtered_df['site_id']==most_affected_site,'sub_root_cause'].str.replace(r"\(.*\)","",regex=True).str.strip().value_counts()
-                sub_root_cause_most_affected_site = sub_counts.idxmax() if not sub_counts.empty else "N/A"
+                sub_series = filtered_df.loc[filtered_df['site_id'] == most_affected_site, 'sub_root_cause'].dropna()
+                if not sub_series.empty:
+                    sub_counts = sub_series.str.replace(r"\(.*\)", "", regex=True).str.strip().value_counts()
+                    sub_root_cause_most_affected_site = sub_counts.idxmax() if not sub_counts.empty else "N/A"
+                else:
+                    sub_root_cause_most_affected_site = "N/A"
             else:
                 sub_root_cause_most_affected_site = "N/A"
 
