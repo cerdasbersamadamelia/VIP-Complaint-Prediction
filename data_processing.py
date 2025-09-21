@@ -459,8 +459,8 @@ for index, row in X.iterrows():
         "antenna_type": row["antenna_type"],
         "band": row["band"].astype(int),
         # event
-        "rain_mm": row["rain_mm"],
-        "temperature_c": row["temperature_c"],
+        "rain_mm": row["rain_mm"].astype(int),
+        "temperature_c": row["temperature_c"].astype(int),
         "weather": row["weather"],
         # alarm
     })
