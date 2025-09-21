@@ -368,7 +368,7 @@ with row4[1]:
                 f"This may affect **{dominant_category}** performance during peak hours, "
                 f"especially under **{top_weather}** weather"
                 + (f" and event **{top_event}**." if top_event else ".")
-                f"The action aims to prevent complaints before they occur."
+                + f"To prevent future complaints."
             )
 
     else:
