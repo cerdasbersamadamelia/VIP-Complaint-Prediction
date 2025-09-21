@@ -105,14 +105,13 @@ with row1[0]:
 with row1[1]:
     st.subheader("Sub Root Cause Hierarchy")
     if {'root_cause', 'sub_root_cause'}.issubset(filtered_df.columns) and not filtered_df.empty:
-        filtered_df['sub_root_cause_clean'] = filtered_df['sub_root_cause'].str.replace(r"\(.*\)", "", regex=True).str.strip()
-        hierarchy_df = filtered_df.groupby(['root_cause', 'sub_root_cause_clean']).size().reset_index(name='Count')
+        hierarchy_df = filtered_df.groupby(['root_cause', 'sub_root_cause']).size().reset_index(name='Count')
         if hierarchy_df.empty:
             st.info("No data.")
         else:
             fig_treemap = px.treemap(
                 hierarchy_df,
-                path=['root_cause', 'sub_root_cause_clean'],
+                path=['root_cause', 'sub_root_cause'],
                 values='Count',
                 color='root_cause',
                 color_discrete_sequence=px.colors.sequential.Cividis
@@ -341,8 +340,7 @@ with row4[1]:
 
             # Sub root cause for most affected site
             if most_affected_site != "N/A" and 'sub_root_cause' in filtered_df.columns:
-                sub_counts = filtered_df.loc[filtered_df['site_id'] == most_affected_site, 'sub_root_cause']\
-                            .str.replace(r"\(.*\)", "", regex=True).str.strip().value_counts()
+                sub_counts = filtered_df.loc[filtered_df['site_id']==most_affected_site,'sub_root_cause'].value_counts()
                 sub_root_cause_most_affected_site = sub_counts.idxmax() if not sub_counts.empty else "N/A"
             else:
                 sub_root_cause_most_affected_site = "N/A"
@@ -364,7 +362,7 @@ with row4[1]:
                 f"focusing on **{sub_root_cause_most_affected_site}** and related KPIs. "
                 f"This may affect **{dominant_category}** performance during peak hours, "
                 f"especially during **{top_weather}** weather"
-                + (f" and events **{top_event}**." if top_event else ".")
+                + (f" and event **{top_event}**." if top_event else ".")
             )
 
     else:
