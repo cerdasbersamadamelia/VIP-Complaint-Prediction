@@ -258,14 +258,15 @@ with row4[0]:
 # Interactive Insight
 with row4[1]:
     st.subheader("Interactive Insight")
-    
-    if 'pred_24h' in filtered_df.columns:
+
+    if 'pred_24h' in filtered_df.columns and not filtered_df.empty:
         yes_count = (filtered_df['pred_24h'] == 'Yes').sum()
         no_count = (filtered_df['pred_24h'] == 'No').sum()
         total = yes_count + no_count
 
         if total == 0:
             st.info("No data.")
+            most_affected_site = "N/A"
         else:
             yes_percent = int((yes_count / total) * 100)
 
@@ -290,57 +291,58 @@ with row4[1]:
             st.plotly_chart(fig_yesno, use_container_width=True)
 
             # Most affected site
-            if 'pred_24h' in filtered_df.columns and not filtered_df.empty:
-                yes_sites = filtered_df[filtered_df['pred_24h']=='Yes']['site_id']
-                most_affected_site = yes_sites.mode()[0] if not yes_sites.mode().empty else "N/A"
-            else:
-                most_affected_site = "N/A"
+            yes_sites = filtered_df[filtered_df['pred_24h'] == 'Yes']['site_id']
+            most_affected_site = yes_sites.mode()[0] if not yes_sites.mode().empty else "N/A"
 
             # Top sectors
             if most_affected_site != "N/A" and 'sector' in filtered_df.columns:
-                sectors = filtered_df.loc[filtered_df['site_id']==most_affected_site,'sector'].value_counts()
-                top_sectors = "/".join([str(s) for s in sectors[sectors==sectors.max()].index]) if not sectors.empty else "N/A"
+                sectors = filtered_df.loc[filtered_df['site_id'] == most_affected_site, 'sector'].value_counts()
+                top_sectors = "/".join(sectors[sectors == sectors.max()].index.astype(str)) if not sectors.empty else "N/A"
             else:
                 top_sectors = "N/A"
 
             # Top bands
-            if most_affected_site != "N/A" and 'band' in filtered_df.columns:
-                bands = filtered_df.loc[(filtered_df['site_id']==most_affected_site) & 
-                                        (filtered_df['sector'].isin(sectors[sectors==sectors.max()].index)),'band'].value_counts()
-                top_bands = "/".join([str(b) for b in bands[bands==bands.max()].index]) if not bands.empty else "N/A"
+            if most_affected_site != "N/A" and 'band' in filtered_df.columns and top_sectors != "N/A":
+                bands = filtered_df.loc[
+                    (filtered_df['site_id'] == most_affected_site) &
+                    (filtered_df['sector'].isin(sectors[sectors == sectors.max()].index)),
+                    'band'
+                ].value_counts()
+                top_bands = "/".join(bands[bands == bands.max()].index.astype(str)) if not bands.empty else "N/A"
             else:
                 top_bands = "N/A"
 
             # Top weather
             if most_affected_site != "N/A" and 'weather' in filtered_df.columns:
-                weathers = filtered_df.loc[filtered_df['site_id']==most_affected_site,'weather'].value_counts()
+                weathers = filtered_df.loc[filtered_df['site_id'] == most_affected_site, 'weather'].value_counts()
                 top_weather = weathers.idxmax() if not weathers.empty else "N/A"
             else:
                 top_weather = "N/A"
 
             # Top event
             if most_affected_site != "N/A" and 'event_type' in filtered_df.columns:
-                events = filtered_df.loc[filtered_df['site_id']==most_affected_site,'event_type'].dropna().value_counts()
+                events = filtered_df.loc[filtered_df['site_id'] == most_affected_site, 'event_type'].dropna().value_counts()
                 top_event = events.idxmax() if not events.empty else None
             else:
                 top_event = None
 
             # Top root cause
-            if 'root_cause' in filtered_df.columns and not filtered_df['root_cause'].empty:
-                top_root = filtered_df['root_cause'].value_counts().idxmax()
+            if 'root_cause' in filtered_df.columns and not filtered_df['root_cause'].dropna().empty:
+                rc_counts = filtered_df['root_cause'].value_counts()
+                top_root = rc_counts.idxmax() if not rc_counts.empty else "N/A"
             else:
                 top_root = "N/A"
 
             # Dominant category
-            if 'pred_category' in filtered_df.columns and not filtered_df['pred_category'].empty:
+            if 'pred_category' in filtered_df.columns and not filtered_df['pred_category'].dropna().empty:
                 dominant_category = filtered_df['pred_category'].mode()[0] if not filtered_df['pred_category'].mode().empty else "N/A"
             else:
                 dominant_category = "N/A"
 
             # Sub root cause for most affected site
             if most_affected_site != "N/A" and 'sub_root_cause' in filtered_df.columns:
-                sub_counts = filtered_df.loc[filtered_df['site_id']==most_affected_site,'sub_root_cause']\
-                            .str.replace(r"\(.*\)","",regex=True).str.strip().value_counts()
+                sub_counts = filtered_df.loc[filtered_df['site_id'] == most_affected_site, 'sub_root_cause']\
+                            .str.replace(r"\(.*\)", "", regex=True).str.strip().value_counts()
                 sub_root_cause_most_affected_site = sub_counts.idxmax() if not sub_counts.empty else "N/A"
             else:
                 sub_root_cause_most_affected_site = "N/A"
@@ -364,6 +366,7 @@ with row4[1]:
                 f"especially during **{top_weather}** weather"
                 + (f" and events like **{top_event}**." if top_event else ".")
             )
+
     else:
         st.info("No data.")
 
