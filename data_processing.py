@@ -444,7 +444,7 @@ for index, row in X.iterrows():
 
     # Collect results into a list
     results.append({
-        "timestamp": features_new.loc[row.name, "timestamp"],
+        "timestamp": features.loc[row.name, "timestamp"],
         "site_id": row["site_id"],
         "sector": row["sector"].astype(int),
         "latitude": row["lat"],
