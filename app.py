@@ -216,7 +216,7 @@ with row3[0]:
         if site_counts.empty:
             st.info("No data.")
         else:
-            st.dataframe(site_counts, height=160)
+            st.dataframe(site_counts, height=150)
     else:
         st.info("No data.")
 
