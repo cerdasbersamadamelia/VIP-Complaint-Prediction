@@ -475,9 +475,15 @@ results_df["site_id"] = le_site_id.inverse_transform(results_df["site_id"].astyp
 # pred_24h (binary Yes/No)
 results_df["pred_24h"] = results_df["pred_24h"].map({0: "No", 1: "Yes"})
 # pred_category (multiclass)
-results_df["pred_category"] = results_df["pred_category"].apply(
-    lambda x: le_category_label.inverse_transform([int(x)])[0] if pd.notnull(x) else np.nan
-)
+def safe_inverse_label(x, le):
+    if pd.isna(x):
+        return np.nan
+    try:
+        return le.inverse_transform([int(x)])[0]
+    except ValueError:
+        return np.nan  # unseen label jadi NaN
+
+results_df["pred_category"] = results_df["pred_category"].apply(lambda x: safe_inverse_label(x, le_category_label))
 # antenna_type
 results_df["antenna_type"] = le_antenna_type.inverse_transform(results_df["antenna_type"].astype(int))
 # weather
@@ -485,9 +491,14 @@ results_df["weather"] = le_weather.inverse_transform(results_df["weather"].astyp
 # event_type
 event_cols = [c for c in X.columns if c.startswith("type_")]
 if event_cols:
-    decoded_type = ohe_events.inverse_transform(X[event_cols].values)
-    results_df["event_type"] = decoded_type.ravel() # flatten 2D -> 1D
-
+    decoded_type = []
+    for i, row_ev in X[event_cols].iterrows():
+        try:
+            decoded = ohe_events.inverse_transform([row_ev.values])[0][0]  # ambil 1 label
+        except IndexError:  # jika semua 0 (ga ada event)
+            decoded = np.nan
+        decoded_type.append(decoded)
+    results_df["event_type"] = decoded_type
 
 # to Streamlit
 def get_prediction_results():
