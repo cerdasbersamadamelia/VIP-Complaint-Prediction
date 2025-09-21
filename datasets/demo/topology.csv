@@ -2,9 +2,9 @@ site_id,lat,lon,azimuth_A,tilt_A,antenna_type,band,sector_count
 SITE_1,-6.2,106.816,0,5,Omni,1800,3
 SITE_2,-6.21,106.79,120,6,Directional,900,3
 SITE_3,-6.22,106.83,240,4,Omni,2100,3
-SITE_4,-6.23,106.83,0,5,Directional,1800,3
+SITE_4,-6.22,106.84,0,5,Directional,1800,3
 SITE_5,-6.24,106.835,120,6,Omni,2300,3
-SITE_6,-6.25,106.84,240,4,Directional,2100,3
+SITE_6,-6.25,106.86,240,4,Directional,2100,3
 SITE_7,-6.26,106.845,0,5,Omni,1800,3
 SITE_8,-6.27,106.85,120,6,Directional,900,3
 SITE_9,-6.28,106.855,240,4,Omni,2100,3
