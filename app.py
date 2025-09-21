@@ -216,7 +216,7 @@ with row3[0]:
         if site_counts.empty:
             st.info("No data.")
         else:
-            st.dataframe(site_counts, height=150)
+            st.dataframe(site_counts, height=160)
     else:
         st.info("No data.")
 
@@ -362,12 +362,13 @@ with row4[1]:
 
             # Narrative Insight
             st.info(
-                f"⚠️ AI predicts **{yes_percent}%** of upcoming complaints are **{top_root}** issues. "
-                f"Immediate inspection is recommended at **{most_affected_site}** sector **{top_sectors}** band **{top_bands}**, "
+                f"⚠️ AI predicts **{yes_percent}%** of future complaints will be **{top_root}** issues. "
+                f"Check **{most_affected_site}** sector **{top_sectors}** band **{top_bands}**, "
                 f"focusing on **{sub_root_cause_most_affected_site}** and related KPIs. "
                 f"This may affect **{dominant_category}** performance during peak hours, "
-                f"especially during **{top_weather}** weather"
+                f"especially under **{top_weather}** weather"
                 + (f" and event **{top_event}**." if top_event else ".")
+                f"The action aims to prevent complaints before they occur."
             )
 
     else:
