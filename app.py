@@ -364,7 +364,7 @@ with row4[1]:
                 f"focusing on **{sub_root_cause_most_affected_site}** and related KPIs. "
                 f"This may affect **{dominant_category}** performance during peak hours, "
                 f"especially during **{top_weather}** weather"
-                + (f" and events like **{top_event}**." if top_event else ".")
+                + (f" and events **{top_event}**." if top_event else ".")
             )
 
     else:
