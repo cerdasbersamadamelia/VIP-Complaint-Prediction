@@ -10,6 +10,7 @@ from datetime import timedelta                           # select tickets within
 
 # Preprocessing
 from sklearn.preprocessing import LabelEncoder           # encode categorical features: weather, antenna_type, site_id, root_cause
+from sklearn.preprocessing import OneHotEncoder          # encode: event, alarm
 from sklearn.model_selection import train_test_split     # split train/test datasets
 
 # ML pipeline: scaling + SMOTE + model
@@ -103,13 +104,23 @@ features = pd.merge(kpi_df, topology_df, on="site_id", how="left")
 le_antenna_type = LabelEncoder()
 features["antenna_type"] = le_antenna_type.fit_transform(features["antenna_type"])
 
+# 💾 Save LabelEncoder for future use
+joblib.dump(le_antenna_type, "encoder/le_antenna_type.pkl")
+
 
 # Create a new 'date' column from timestamp and ensure dtype is datetime
 features["date"] = pd.to_datetime(features["timestamp"].dt.date)
 
 # 🔢 One-Hot Encode Event Types
 # Convert categorical 'type' column in events_df into one-hot encoded columns
-events_one_hot = pd.get_dummies(events_df["type"], prefix="event").astype(int)
+ohe = OneHotEncoder(sparse_output=False, handle_unknown="ignore")
+events_encoded = ohe.fit_transform(events_df[["type"]])
+
+# Create a dataframe from one-hot results
+events_one_hot = pd.DataFrame(events_encoded, columns=ohe.get_feature_names_out(["type"]))
+
+# 💾 Save LabelEncoder for future use
+joblib.dump(ohe, "ohe_events.pkl")
 
 # Combine one-hot encoded columns with 'date' and 'site_id'
 events_df_2 = pd.concat([events_df[["date", "site_id"]], events_one_hot], axis=1)
@@ -123,7 +134,7 @@ events_df_2 = events_df_2.groupby(["date", "site_id"]).max().reset_index()
 features = pd.merge(features, events_df_2, on=["date", "site_id"], how="left")
 
 # 🔍 Check Missing Values for Event Columns
-events_types = ["event_maintenance", "event_concert", "event_government_event"]
+events_types = ["type_maintenance", "type_concert", "type_government"]
 
 # 💧 Fill Missing Event Columns with 0
 # Replace NaN values in one-hot encoded event columns with 0
@@ -195,6 +206,9 @@ nearest_weather_df = nearest_weather_df.drop_duplicates(subset=["site_id", "date
 # Convert 'weather' from string/object to numeric using Label Encoding
 le_weather = LabelEncoder()
 nearest_weather_df["weather"] = le_weather.fit_transform(nearest_weather_df["weather"])
+
+# 💾 Save LabelEncoder for future use
+joblib.dump(le_weather, "encoder/le_weather.pkl")
 
 # 🔗 Merge Nearest Weather Data into Features
 # Merge on 'site_id' and 'date' to add weather info to each KPI record
@@ -333,11 +347,14 @@ X_train2, X_test2, y_train2, y_test2 = train_test_split(
 model_level1 = joblib.load("models/level1/XGB_Level1.pkl")
 
 # Load Level 2 model (Multiclass)
-model_level2 = joblib.load("models/level2/Random_Forest_Level2.pkl")
+model_level2 = joblib.load("models/level1/Random_Forest_Level2.pkl")
 
 # Load saved label encoders
 le_site_id = joblib.load("encoder/le_site_id.pkl")
 le_category_label = joblib.load("encoder/le_category_label.pkl")
+le_antenna_type = joblib.load("encoder/le_antenna_type.pkl")
+le_weather = joblib.load("encoder/le_weather.pkl")
+ohe_events = joblib.load("encoder/ohe_events.pkl")
 
 
 def level3_recommendation(row):
@@ -351,8 +368,8 @@ def level3_recommendation(row):
     """
 
     # ---------------- Tier 1: Availability ----------------
-    if row["tnl_availability_pct"] < 98:
-        return "Availability", f"Availability Problem ({int(row['tnl_availability_pct'])}%)", "Troubleshoot"
+    if row["availability"] < 98:
+        return "Availability", f"Availability Problem ({int(row['availability'])}%)", "Troubleshoot"
 
     # ---------------- Tier 1: Quality Alarms ----------------
     elif row["cpri_alarm"] == 1:
@@ -410,7 +427,7 @@ def level3_recommendation(row):
 
 results = []
 
-for index, row in X.iterrows():
+for index, row in X_new.iterrows():
     # Level 1: Predict if site will have a complaint in next 24h
     pred_24h = model_level1.predict([row])[0]
 
@@ -427,31 +444,49 @@ for index, row in X.iterrows():
 
     # Collect results into a list
     results.append({
-        "timestamp": features.loc[row.name, "timestamp"],
+        "timestamp": features_new.loc[row.name, "timestamp"],
         "site_id": row["site_id"],
-        "sector": row["sector"],
+        "sector": row["sector"].astype(int),
         "latitude": row["lat"],
         "longitude": row["lon"],
         "pred_24h": pred_24h,
         "pred_category": pred_category,
         "root_cause": root_cause,
         "sub_root_cause": sub_root_cause,
-        "action": action
+        "action": action,
+        "azimuth": row["azimuth_A"].astype(int),
+        "tilt": row["tilt_A"].astype(int),
+        "antenna_type": row["antenna_type"],
+        "band": row["band"].astype(int),
+        # event
+        "rain_mm": row["rain_mm"],
+        "temperature_c": row["temperature_c"],
+        "weather": row["weather"],
+        # alarm
     })
 
 # Convert results to DataFrame
 results_df = pd.DataFrame(results)
 
 # Decode categorical features back to original labels
+
+# site_id
 results_df["site_id"] = le_site_id.inverse_transform(results_df["site_id"].astype(int))
-results_df["sector"] = results_df["sector"].astype(int)
+# pred_24h (binary Yes/No)
 results_df["pred_24h"] = results_df["pred_24h"].map({0: "No", 1: "Yes"})
+# pred_category (multiclass)
 results_df["pred_category"] = results_df["pred_category"].apply(
     lambda x: le_category_label.inverse_transform([int(x)])[0] if pd.notnull(x) else np.nan
 )
-
-# Display top 10 predictions
-results_df.head(10)
+# antenna_type
+results_df["antenna_type"] = le_antenna_type.inverse_transform(results_df["antenna_type"].astype(int))
+# weather
+results_df["weather"] = le_weather.inverse_transform(results_df["weather"].astype(int))
+# event_type
+event_cols = [c for c in X_new.columns if c.startswith("type_")]
+if event_cols:
+    decoded_type = ohe_events.inverse_transform(X_new[event_cols].values)
+    results_df["event_type"] = decoded_type.ravel() # flatten 2D -> 1D
 
 
 # to Streamlit
