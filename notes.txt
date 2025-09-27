@@ -1,0 +1,274 @@
+## 💡 Projek AI: **"VIP Complaint Prediction & Root Cause AI"**
+
+### 📌 Latar Belakang
+
+VIP & Enterprise user itu ga bisa nunggu komplain ditanganin. Kalau mereka ngalamin internet lemot, WA call putus2, atau voice drop, impact-nya langsung besar (kontrak, revenue, bahkan reputasi operator).
+Saat ini handling masih **reaktif** (nunggu komplain masuk → baru direspon). Harusnya kita bisa **proaktif**: sebelum komplain masuk, sistem udah tahu potensi issue dan kasih early warning.
+
+---
+
+### 🎯 Tujuan
+
+1. **Prediksi** kemungkinan komplain akan terjadi di site / cluster tertentu (early warning system).
+2. **Identifikasi root cause** otomatis berdasarkan pola KPI (misalnya internet lemot → PRB congestion; WA call gagal → high latency; voice putus2 → UL interference).
+3. **Prioritization** → kasih alert ke team sebelum VIP benar2 nge-complain.
+
+---
+
+### 🔑 X (Features) → dari data monitoring yg lu bilang lengkap
+
+* **Radio KPI**:
+
+  * RSRP, RSRQ, SINR
+  * PRB DL/UL utilization
+  * Max user / active user
+  * UL interference
+  * Handover success rate
+  * Call setup success rate
+* **Core & Transport KPI**:
+
+  * Packet loss
+  * Latency
+  * CPRI/VSWR alarm
+  * TNL availability
+* **Service-Specific KPI**:
+
+  * WhatsApp success ratio, VoLTE call drop rate, SMS success ratio, Gaming latency
+* **Event/External**:
+
+  * Maintenance schedule
+  * Big event (konser, acara kenegaraan)
+  * Weather (opsional kalau bisa integrasi)
+
+---
+
+### 🎯 y (Target / Output)
+
+* **Level 1: Komplain Prediction (Binary)** → Apakah site/cluster ini berpotensi jadi komplain VIP dalam 24 jam? (Yes/No)
+* **Level 2: Komplain Category (Multiclass)** → Prediksi jenis komplain:
+
+  * Internet Lemot
+  * Coverage/Sinyal
+  * WA Call Issue
+  * Voice Call Issue
+  * SMS Issue
+  * Gaming Lag
+* **Level 3: Root Cause Recommendation** → Mapping hasil prediksi ke solusi:
+
+  * High PRB → kapasitas
+  * Low RSRP → coverage
+  * High UL interference → quality issue
+  * Transport packet loss → core/transport
+
+---
+
+### 🚀 Nilai Tambah
+
+* Bisa dipresentasikan ke atasan sebagai **AI Early Warning System for VIP Complaint**.
+* Jadi *shift* dari **reaktif → proaktif**.
+* Kalau jalan, bisa di-scale ke **all customer complaint prediction**, bukan cuma VIP.
+
+---
+
+💭 Gw kepikiran bisa dibagi jadi **2 fase**:
+
+1. **Phase 1 (Quick Win)** → build ML model (classification) buat prediksi potensi komplain berdasarkan KPI harian.
+2. **Phase 2 (Ambisius)** → tambah NLP buat analisis tiket komplain (misal teks “internet lemot banget” → auto mapping ke KPI pattern).
+
+------------------------------------------------------------------------------------------
+
+dataset:
+
+- kpi_timeseries.csv (granularity 15 menit) Isinya kombinasi Radio KPI, Core/Transport KPI, dan Service KPI. Header: timestamp, site_id, sector, rsrp, rsrq, sinr, prb_dl_util_pct, prb_ul_util_pct, active_user, max_user, ul_interference_db, ho_success_rate, cssr, packet_loss_pct, latency_ms, cpri_alarm, vswr_alarm, tnl_availability_pct, wa_success_ratio, volte_drop_rate, sms_success_ratio, gaming_latency_ms, throughput_dl_mbps 
+- alarms.csv Fokus ke alarm teknis (CPRI, VSWR, transport). Header: alarm_id, timestamp, site_id, severity, alarm_type, description 
+- tickets.csv Komplain VIP/enterprise (text + kategori). Header: ticket_id, timestamp, customer_id, vip, site_id, category_label, text, severity_reported (kategori bisa: internet, coverage, wa_call, voice, sms, gaming) 
+- topology.csv Metadata site buat mapping. Header: site_id, lat, lon, azimuth_A, tilt_A, antenna_type, band, sector_count 
+- events.csv Buat external features: konser, maintenance, event nasional. Header: event_id, date, site_id, type, description 
+- weather.csv Bisa di-join ke site_id via koordinat, dummy dulu isi hujan/cerah. Header: date, lat, lon, weather, rain_mm, temperature_c
+
+------------------------------------------------------------------------------------------
+
+hasil level 1
+
+	Model	Accuracy	Precision	Recall	F1 Score	Confusion Matrix
+0	XGB	0.84	0.83	0.93	0.88	[[2306, 980], [398, 4956]]
+1	Gradient Boosting	0.84	0.83	0.93	0.88	[[2282, 1004], [381, 4973]]
+2	CatBoost	0.84	0.83	0.93	0.88	[[2250, 1036], [364, 4990]]
+3	LGBM	0.83	0.82	0.93	0.87	[[2212, 1074], [373, 4981]]
+4	Random Forest	0.83	0.86	0.86	0.86	[[2548, 738], [733, 4621]]
+5	Decision Tree	0.80	0.84	0.85	0.84	[[2420, 866], [824, 4530]]
+6	KNN	0.80	0.82	0.87	0.85	[[2257, 1029], [677, 4677]]
+7	Logistic Regression	0.65	0.67	0.88	0.76	[[959, 2327], [654, 4700]]
+
+hasil model 2
+
+
+Model	Accuracy	Precision	Recall	F1 Score
+0	Random Forest	0.70	0.72	0.70	0.71
+1	LGBM	0.70	0.75	0.70	0.70
+2	Gradient Boosting	0.70	0.74	0.70	0.70
+3	XGB	0.69	0.74	0.69	0.69
+4	CatBoost	0.67	0.73	0.67	0.67
+5	Decision Tree	0.67	0.67	0.67	0.67
+6	KNN	0.59	0.66	0.59	0.59
+7	Logistic Regression	0.31	0.41	0.31	0.30
+
+------------------------------------------------------------------------------------------
+
+slide 1
+
+I’m Damelia, and I built this project on my own: AI for VIP complaint prediction. 
+(demo)
+
+In this video I’ll show the idea, the data, and how the system works — from prediction to root-cause recommendation. 
+(app.ipynb: intro, data, code)
+
+let you feel my voice and understand why this matters for support teams and the business.
+
+---
+
+slide 2
+
+I work in Network VIP Event Enterprise Handling. Every day we get complaints from VIP and enterprise clients. 
+
+The problems repeat: slow internet, signal drops, WhatsApp calls not working, Voice calls breaking, undelivered SMS, sometimes gaming lag.
+
+Our process is reactive. We wait for a complaint, then run. It’s like playing whack-a-mole — exhausting, time-consuming, and it frustrates users.
+
+What if we flip the game?
+
+Instead of waiting for complaints, AI gives early warnings.
+
+Imagine getting a spoiler about network issues 24 hours before users complain — we can prepare fixes, not only react.
+
+This isn’t just efficiency; it builds trust. Users feel looked after, not abandoned.
+
+---
+
+slide 3
+
+The solution is split into three actionable levels.
+
+Level one. Predict whether a site will get a complaint in the next 24 hours.
+
+Level two. predict the complaint category.
+
+Level three. give simple rule-based root-cause suggestions. like. Low Coverage → Optimization. Packet Loss → Troubleshooting.
+
+With these three levels the team not only knows an issue is coming, they know where to look and what to check.
+
+---
+
+slide 4
+
+All the data here are dummy, generated by ChatGPT. No secrets, no real customers.
+
+We use: kpi_timeseries (adio, Transport, and Service KPIs), alarms (Technical alarms), tickets (Complaints from customers.), topology (Site information), events (Concerts, maintenance, national events), weather (Sunshine, rain, temperature). Plenty of rows — enough to simulate a real workload.
+
+Multiple sources mean multiple signals; our job is to combine them into one truth table the model can learn from.
+
+---
+
+slide 5-8
+
+Here are the practical steps I followed.
+
+Step one. load all files.
+
+Step two. clean (Fill the missing values with median. Drop the duplicates).
+
+Step three. Merge everything into one table.
+
+Step four. Create the target columns from tickets. Level one is binary. Level two is multiclass.
+
+Step five. Encode the categorical features.
+
+Step six. Train test split. Eighty twenty.
+
+Step seven. Build the pipeline. Scaling plus SMOTE plus model. Level one no SMOTE, to avoid overfitting. Level two with SMOTE, to balance the classes.
+
+Step eight. Test eight models.
+
+Step nine. Evaluate performance. Basically, a talent show for models.
+
+Step ten. pick winners (XGBoost for level 1, Random Forest for level 2).
+
+Step eleven. Test with the new dataset. Because practice makes perfect.
+
+Step twelve. Create level three. Root cause. Not from AI, just logic. Based on KPI thresholds and tier.
+
+Step thirteen. Build the prototype database. SQLite. Store all six files as tables. Export to vip_server.db.
+
+Step fourteen. Create preprocessing script. Save all the steps.
+
+And finally. Visualization with Streamlit. Import the database, the models, and all the encoders. And make it look alive.
+
+This flow ensures the model is not just accurate in a lab, but operational and reproducible.
+
+---
+
+slide 9
+
+Do you still remember Step 3 — merge everything into one table?
+
+All six CSVs get stitched together so the model can see what happened and where.
+
+First, I join KPI timeseries with site topology using site ID as the glue. Boom — each row now holds KPI values plus site details; about thirty columns to start.
+
+So we can ask not only when an issue happens, but exactly where.
+
+---
+
+slide 10
+
+Events often explain sudden spikes; they’re not noise, they’re signals.
+
+I one‑hot encode each event type — concert, maintenance, government — so each becomes its own column. If multiple events fall on the same day, take the max: 1 means event happened, 0 means none. 
+
+Then join on date and site ID. now our features level up to thirty four columns.
+
+That on/off event flag prevents the model from mistaking crowd-driven traffic for a network fault.
+
+---
+
+slide 11
+
+Weather matters, but only if matched to the right site.
+
+I match each site to the nearest weather station using haversine distance.
+
+Encode weather type numerically, drop duplicates, and remove the date column.
+
+Now the features level up again to thirty‑seven columns
+
+With weather added the model knows if the problem came from a storm or the radio.
+
+----
+
+slide 12
+
+I even made a calculation example. If math is your love language, go check it out.
+
+----
+
+slide 13
+
+Alarms are signal red flags — listen to them.
+
+Encode severity, aggregate alarm counts per 3‑hour window
+
+add columns critical major minor total and merge on site ID and timestamp.
+
+now about forty features
+
+Alarm spikes often show up before tickets — they sharpen our early‑warning signal and make predictions actionable.
+
+---
+
+slide 15
+
+Thank you so much for watching I hope you enjoyed it and got some value from this video
+
+You can also check out the source code on GitHub and see my conversation with ChatGPT about this project all the links are in the description so go ahead and have fun exploring
+
+I’m Damelia — I build systems so teams stop chasing problems and start knowing them first. See you in the next video. Bye!
