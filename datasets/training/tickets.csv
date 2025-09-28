@@ -1,0 +1,201 @@
+ticket_id,timestamp,customer_id,vip,site_id,category_label,text,severity_reported
+TCK_0,1/1/2025 21:00,CUST_369,1,SITE_43,SMS Issue,Customer reported issue with sms,low
+TCK_1,1/2/2025 19:00,CUST_423,1,SITE_37,Internet Lag,Customer reported issue with internet,high
+TCK_2,1/1/2025 10:00,CUST_395,1,SITE_3,Gaming Lag,Customer reported issue with gaming,low
+TCK_3,1/2/2025 9:00,CUST_393,1,SITE_42,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_4,1/3/2025 5:00,CUST_16,1,SITE_40,Gaming Lag,Customer reported issue with gaming,medium
+TCK_5,1/3/2025 21:00,CUST_490,1,SITE_19,Gaming Lag,Customer reported issue with gaming,medium
+TCK_6,1/3/2025 13:00,CUST_208,1,SITE_16,Gaming Lag,Customer reported issue with gaming,medium
+TCK_7,1/3/2025 10:00,CUST_31,1,SITE_5,Gaming Lag,Customer reported issue with gaming,high
+TCK_8,1/3/2025 8:00,CUST_238,1,SITE_27,Voice Call Issue,Customer reported issue with voice,high
+TCK_9,1/2/2025 19:00,CUST_161,1,SITE_39,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_10,1/2/2025 16:00,CUST_500,1,SITE_47,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_11,1/1/2025 16:00,CUST_264,1,SITE_49,WA Call Issue,Customer reported issue with wa_call,low
+TCK_12,1/1/2025 13:00,CUST_239,1,SITE_21,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_13,1/2/2025 10:00,CUST_73,1,SITE_29,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_14,1/1/2025 6:00,CUST_443,1,SITE_19,Voice Call Issue,Customer reported issue with voice,low
+TCK_15,1/3/2025 5:00,CUST_417,1,SITE_16,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_16,1/2/2025 16:00,CUST_256,1,SITE_13,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_17,1/3/2025 11:00,CUST_255,1,SITE_32,WA Call Issue,Customer reported issue with wa_call,high
+TCK_18,1/1/2025 11:00,CUST_235,1,SITE_26,SMS Issue,Customer reported issue with sms,high
+TCK_19,1/2/2025 3:00,CUST_25,1,SITE_38,WA Call Issue,Customer reported issue with wa_call,high
+TCK_20,1/2/2025 12:00,CUST_452,1,SITE_32,SMS Issue,Customer reported issue with sms,low
+TCK_21,1/3/2025 12:00,CUST_5,1,SITE_19,SMS Issue,Customer reported issue with sms,high
+TCK_22,1/3/2025 7:00,CUST_373,1,SITE_9,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_23,1/3/2025 3:00,CUST_206,1,SITE_24,Internet Lag,Customer reported issue with internet,high
+TCK_24,1/4/2025 0:00,CUST_186,1,SITE_36,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_25,1/2/2025 12:00,CUST_259,1,SITE_5,Voice Call Issue,Customer reported issue with voice,medium
+TCK_26,1/3/2025 22:00,CUST_349,1,SITE_18,SMS Issue,Customer reported issue with sms,low
+TCK_27,1/1/2025 15:00,CUST_202,1,SITE_9,Internet Lag,Customer reported issue with internet,medium
+TCK_28,1/2/2025 19:00,CUST_387,1,SITE_36,WA Call Issue,Customer reported issue with wa_call,high
+TCK_29,1/2/2025 1:00,CUST_206,1,SITE_39,SMS Issue,Customer reported issue with sms,low
+TCK_30,1/1/2025 5:00,CUST_71,1,SITE_3,Internet Lag,Customer reported issue with internet,low
+TCK_31,1/2/2025 18:00,CUST_234,1,SITE_31,SMS Issue,Customer reported issue with sms,high
+TCK_32,1/3/2025 17:00,CUST_477,1,SITE_9,WA Call Issue,Customer reported issue with wa_call,low
+TCK_33,1/2/2025 16:00,CUST_316,1,SITE_11,Voice Call Issue,Customer reported issue with voice,low
+TCK_34,1/2/2025 14:00,CUST_260,1,SITE_38,WA Call Issue,Customer reported issue with wa_call,low
+TCK_35,1/3/2025 20:00,CUST_289,1,SITE_32,Gaming Lag,Customer reported issue with gaming,medium
+TCK_36,1/3/2025 12:00,CUST_170,1,SITE_2,WA Call Issue,Customer reported issue with wa_call,low
+TCK_37,1/1/2025 14:00,CUST_158,1,SITE_27,SMS Issue,Customer reported issue with sms,low
+TCK_38,1/1/2025 3:00,CUST_136,1,SITE_39,Voice Call Issue,Customer reported issue with voice,low
+TCK_39,1/2/2025 5:00,CUST_299,1,SITE_47,Internet Lag,Customer reported issue with internet,medium
+TCK_40,1/1/2025 21:00,CUST_370,1,SITE_34,Gaming Lag,Customer reported issue with gaming,low
+TCK_41,1/3/2025 0:00,CUST_125,1,SITE_10,Gaming Lag,Customer reported issue with gaming,high
+TCK_42,1/1/2025 14:00,CUST_226,1,SITE_13,Internet Lag,Customer reported issue with internet,medium
+TCK_43,1/3/2025 5:00,CUST_354,1,SITE_10,Voice Call Issue,Customer reported issue with voice,high
+TCK_44,1/3/2025 4:00,CUST_472,1,SITE_33,SMS Issue,Customer reported issue with sms,medium
+TCK_45,1/1/2025 7:00,CUST_266,1,SITE_46,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_46,1/3/2025 23:00,CUST_245,1,SITE_21,Gaming Lag,Customer reported issue with gaming,low
+TCK_47,1/3/2025 0:00,CUST_236,1,SITE_21,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_48,1/2/2025 19:00,CUST_347,1,SITE_35,WA Call Issue,Customer reported issue with wa_call,low
+TCK_49,1/2/2025 9:00,CUST_99,1,SITE_40,Voice Call Issue,Customer reported issue with voice,high
+TCK_50,1/2/2025 11:00,CUST_116,1,SITE_36,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_51,1/2/2025 12:00,CUST_354,1,SITE_46,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_52,1/3/2025 14:00,CUST_179,1,SITE_21,Voice Call Issue,Customer reported issue with voice,low
+TCK_53,1/2/2025 11:00,CUST_294,1,SITE_19,Internet Lag,Customer reported issue with internet,low
+TCK_54,1/3/2025 21:00,CUST_420,1,SITE_25,Voice Call Issue,Customer reported issue with voice,medium
+TCK_55,1/1/2025 18:00,CUST_148,1,SITE_19,Internet Lag,Customer reported issue with internet,low
+TCK_56,1/1/2025 10:00,CUST_336,1,SITE_23,Voice Call Issue,Customer reported issue with voice,medium
+TCK_57,1/3/2025 13:00,CUST_424,1,SITE_14,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_58,1/2/2025 10:00,CUST_140,1,SITE_36,Gaming Lag,Customer reported issue with gaming,high
+TCK_59,1/1/2025 13:00,CUST_301,1,SITE_40,Gaming Lag,Customer reported issue with gaming,high
+TCK_60,1/2/2025 7:00,CUST_464,1,SITE_4,Gaming Lag,Customer reported issue with gaming,low
+TCK_61,1/2/2025 4:00,CUST_27,1,SITE_41,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_62,1/3/2025 4:00,CUST_242,1,SITE_22,Gaming Lag,Customer reported issue with gaming,high
+TCK_63,1/1/2025 17:00,CUST_476,1,SITE_1,SMS Issue,Customer reported issue with sms,high
+TCK_64,1/3/2025 4:00,CUST_245,1,SITE_42,Voice Call Issue,Customer reported issue with voice,low
+TCK_65,1/2/2025 1:00,CUST_165,1,SITE_49,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_66,1/1/2025 7:00,CUST_334,1,SITE_50,Internet Lag,Customer reported issue with internet,low
+TCK_67,1/2/2025 5:00,CUST_371,1,SITE_35,Gaming Lag,Customer reported issue with gaming,high
+TCK_68,1/1/2025 22:00,CUST_479,1,SITE_27,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_69,1/3/2025 2:00,CUST_480,1,SITE_32,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_70,1/2/2025 13:00,CUST_153,1,SITE_3,Internet Lag,Customer reported issue with internet,low
+TCK_71,1/1/2025 13:00,CUST_233,1,SITE_22,WA Call Issue,Customer reported issue with wa_call,low
+TCK_72,1/3/2025 21:00,CUST_456,1,SITE_34,Voice Call Issue,Customer reported issue with voice,high
+TCK_73,1/3/2025 16:00,CUST_99,1,SITE_30,WA Call Issue,Customer reported issue with wa_call,high
+TCK_74,1/2/2025 18:00,CUST_235,1,SITE_11,Gaming Lag,Customer reported issue with gaming,low
+TCK_75,1/2/2025 8:00,CUST_8,1,SITE_46,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_76,1/2/2025 19:00,CUST_346,1,SITE_19,SMS Issue,Customer reported issue with sms,high
+TCK_77,1/1/2025 22:00,CUST_460,1,SITE_40,Gaming Lag,Customer reported issue with gaming,medium
+TCK_78,1/3/2025 6:00,CUST_45,1,SITE_33,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_79,1/1/2025 12:00,CUST_245,1,SITE_12,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_80,1/2/2025 7:00,CUST_197,1,SITE_1,WA Call Issue,Customer reported issue with wa_call,high
+TCK_81,1/3/2025 9:00,CUST_489,1,SITE_49,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_82,1/2/2025 14:00,CUST_294,1,SITE_38,Gaming Lag,Customer reported issue with gaming,high
+TCK_83,1/2/2025 9:00,CUST_355,1,SITE_42,WA Call Issue,Customer reported issue with wa_call,high
+TCK_84,1/1/2025 7:00,CUST_239,1,SITE_43,Internet Lag,Customer reported issue with internet,medium
+TCK_85,1/1/2025 20:00,CUST_258,1,SITE_26,Gaming Lag,Customer reported issue with gaming,low
+TCK_86,1/2/2025 15:00,CUST_328,1,SITE_45,Internet Lag,Customer reported issue with internet,medium
+TCK_87,1/2/2025 23:00,CUST_113,1,SITE_40,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_88,1/3/2025 13:00,CUST_383,1,SITE_10,Voice Call Issue,Customer reported issue with voice,low
+TCK_89,1/2/2025 23:00,CUST_282,1,SITE_27,Gaming Lag,Customer reported issue with gaming,medium
+TCK_90,1/3/2025 20:00,CUST_391,1,SITE_43,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_91,1/1/2025 10:00,CUST_271,1,SITE_34,Voice Call Issue,Customer reported issue with voice,low
+TCK_92,1/2/2025 22:00,CUST_58,1,SITE_5,SMS Issue,Customer reported issue with sms,high
+TCK_93,1/3/2025 22:00,CUST_294,1,SITE_33,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_94,1/1/2025 19:00,CUST_438,1,SITE_11,WA Call Issue,Customer reported issue with wa_call,low
+TCK_95,1/3/2025 8:00,CUST_106,1,SITE_8,Gaming Lag,Customer reported issue with gaming,low
+TCK_96,1/3/2025 14:00,CUST_229,1,SITE_6,SMS Issue,Customer reported issue with sms,high
+TCK_97,1/3/2025 10:00,CUST_213,1,SITE_9,SMS Issue,Customer reported issue with sms,medium
+TCK_98,1/4/2025 0:00,CUST_237,1,SITE_4,SMS Issue,Customer reported issue with sms,low
+TCK_99,1/2/2025 15:00,CUST_203,1,SITE_47,Internet Lag,Customer reported issue with internet,medium
+TCK_100,1/1/2025 0:00,CUST_297,1,SITE_48,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_101,1/1/2025 5:00,CUST_359,1,SITE_28,WA Call Issue,Customer reported issue with wa_call,high
+TCK_102,1/3/2025 21:00,CUST_479,1,SITE_4,Internet Lag,Customer reported issue with internet,medium
+TCK_103,1/1/2025 4:00,CUST_93,1,SITE_19,Voice Call Issue,Customer reported issue with voice,high
+TCK_104,1/3/2025 5:00,CUST_230,1,SITE_24,Voice Call Issue,Customer reported issue with voice,medium
+TCK_105,1/3/2025 0:00,CUST_494,1,SITE_6,Gaming Lag,Customer reported issue with gaming,low
+TCK_106,1/3/2025 21:00,CUST_441,1,SITE_9,Gaming Lag,Customer reported issue with gaming,medium
+TCK_107,1/1/2025 15:00,CUST_202,1,SITE_12,SMS Issue,Customer reported issue with sms,low
+TCK_108,1/1/2025 16:00,CUST_428,1,SITE_47,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_109,1/1/2025 2:00,CUST_345,1,SITE_20,Voice Call Issue,Customer reported issue with voice,low
+TCK_110,1/3/2025 21:00,CUST_195,1,SITE_28,SMS Issue,Customer reported issue with sms,high
+TCK_111,1/2/2025 7:00,CUST_80,1,SITE_30,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_112,1/2/2025 0:00,CUST_17,1,SITE_47,Internet Lag,Customer reported issue with internet,low
+TCK_113,1/3/2025 5:00,CUST_124,1,SITE_40,Internet Lag,Customer reported issue with internet,high
+TCK_114,1/1/2025 8:00,CUST_18,1,SITE_7,SMS Issue,Customer reported issue with sms,medium
+TCK_115,1/1/2025 6:00,CUST_23,1,SITE_16,Gaming Lag,Customer reported issue with gaming,medium
+TCK_116,1/3/2025 8:00,CUST_112,1,SITE_15,SMS Issue,Customer reported issue with sms,high
+TCK_117,1/1/2025 17:00,CUST_120,1,SITE_33,WA Call Issue,Customer reported issue with wa_call,low
+TCK_118,1/2/2025 16:00,CUST_396,1,SITE_37,SMS Issue,Customer reported issue with sms,low
+TCK_119,1/2/2025 17:00,CUST_449,1,SITE_16,WA Call Issue,Customer reported issue with wa_call,high
+TCK_120,1/3/2025 18:00,CUST_154,1,SITE_15,Voice Call Issue,Customer reported issue with voice,medium
+TCK_121,1/1/2025 7:00,CUST_451,1,SITE_36,SMS Issue,Customer reported issue with sms,low
+TCK_122,1/1/2025 22:00,CUST_219,1,SITE_41,Gaming Lag,Customer reported issue with gaming,low
+TCK_123,1/3/2025 15:00,CUST_483,1,SITE_4,WA Call Issue,Customer reported issue with wa_call,low
+TCK_124,1/3/2025 0:00,CUST_357,1,SITE_34,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_125,1/3/2025 4:00,CUST_193,1,SITE_10,WA Call Issue,Customer reported issue with wa_call,high
+TCK_126,1/3/2025 20:00,CUST_435,1,SITE_31,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_127,1/2/2025 14:00,CUST_413,1,SITE_46,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_128,1/1/2025 7:00,CUST_496,1,SITE_36,Voice Call Issue,Customer reported issue with voice,medium
+TCK_129,1/3/2025 23:00,CUST_199,1,SITE_34,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_130,1/2/2025 8:00,CUST_332,1,SITE_14,WA Call Issue,Customer reported issue with wa_call,high
+TCK_131,1/3/2025 9:00,CUST_275,1,SITE_24,Internet Lag,Customer reported issue with internet,low
+TCK_132,1/2/2025 0:00,CUST_194,1,SITE_4,WA Call Issue,Customer reported issue with wa_call,low
+TCK_133,1/1/2025 5:00,CUST_412,1,SITE_5,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_134,1/3/2025 23:00,CUST_107,1,SITE_14,Voice Call Issue,Customer reported issue with voice,medium
+TCK_135,1/2/2025 14:00,CUST_480,1,SITE_1,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_136,1/1/2025 15:00,CUST_469,1,SITE_48,Voice Call Issue,Customer reported issue with voice,high
+TCK_137,1/2/2025 2:00,CUST_283,1,SITE_26,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_138,1/2/2025 12:00,CUST_274,1,SITE_25,Voice Call Issue,Customer reported issue with voice,low
+TCK_139,1/2/2025 21:00,CUST_185,1,SITE_20,WA Call Issue,Customer reported issue with wa_call,low
+TCK_140,1/3/2025 15:00,CUST_412,1,SITE_30,Internet Lag,Customer reported issue with internet,low
+TCK_141,1/3/2025 12:00,CUST_469,1,SITE_49,WA Call Issue,Customer reported issue with wa_call,high
+TCK_142,1/2/2025 23:00,CUST_24,1,SITE_21,Voice Call Issue,Customer reported issue with voice,low
+TCK_143,1/2/2025 4:00,CUST_9,1,SITE_48,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_144,1/3/2025 22:00,CUST_369,1,SITE_38,SMS Issue,Customer reported issue with sms,medium
+TCK_145,1/2/2025 13:00,CUST_169,1,SITE_10,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_146,1/3/2025 0:00,CUST_256,1,SITE_37,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_147,1/2/2025 19:00,CUST_495,1,SITE_17,Voice Call Issue,Customer reported issue with voice,low
+TCK_148,1/3/2025 14:00,CUST_376,1,SITE_30,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_149,1/1/2025 21:00,CUST_280,1,SITE_9,Gaming Lag,Customer reported issue with gaming,medium
+TCK_150,1/1/2025 23:00,CUST_491,1,SITE_35,Gaming Lag,Customer reported issue with gaming,high
+TCK_151,1/3/2025 19:00,CUST_484,1,SITE_3,Internet Lag,Customer reported issue with internet,low
+TCK_152,1/1/2025 6:00,CUST_212,1,SITE_49,Internet Lag,Customer reported issue with internet,high
+TCK_153,1/2/2025 5:00,CUST_78,1,SITE_5,Gaming Lag,Customer reported issue with gaming,high
+TCK_154,1/2/2025 3:00,CUST_192,1,SITE_33,Voice Call Issue,Customer reported issue with voice,high
+TCK_155,1/3/2025 13:00,CUST_9,1,SITE_43,Voice Call Issue,Customer reported issue with voice,high
+TCK_156,1/3/2025 20:00,CUST_7,1,SITE_36,Voice Call Issue,Customer reported issue with voice,high
+TCK_157,1/3/2025 19:00,CUST_275,1,SITE_47,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_158,1/1/2025 2:00,CUST_346,1,SITE_33,Gaming Lag,Customer reported issue with gaming,medium
+TCK_159,1/1/2025 22:00,CUST_269,1,SITE_7,Internet Lag,Customer reported issue with internet,high
+TCK_160,1/2/2025 6:00,CUST_270,1,SITE_13,SMS Issue,Customer reported issue with sms,medium
+TCK_161,1/2/2025 21:00,CUST_41,1,SITE_18,Voice Call Issue,Customer reported issue with voice,medium
+TCK_162,1/3/2025 3:00,CUST_125,1,SITE_30,SMS Issue,Customer reported issue with sms,low
+TCK_163,1/2/2025 4:00,CUST_424,1,SITE_20,Gaming Lag,Customer reported issue with gaming,high
+TCK_164,1/1/2025 4:00,CUST_195,1,SITE_6,Voice Call Issue,Customer reported issue with voice,medium
+TCK_165,1/3/2025 22:00,CUST_327,1,SITE_31,Internet Lag,Customer reported issue with internet,high
+TCK_166,1/1/2025 21:00,CUST_433,1,SITE_6,Voice Call Issue,Customer reported issue with voice,medium
+TCK_167,1/2/2025 18:00,CUST_459,1,SITE_37,Internet Lag,Customer reported issue with internet,low
+TCK_168,1/1/2025 5:00,CUST_462,1,SITE_15,Coverage / Sinyal,Customer reported issue with coverage,low
+TCK_169,1/4/2025 0:00,CUST_24,1,SITE_31,WA Call Issue,Customer reported issue with wa_call,high
+TCK_170,1/2/2025 11:00,CUST_337,1,SITE_35,SMS Issue,Customer reported issue with sms,high
+TCK_171,1/1/2025 22:00,CUST_493,1,SITE_21,Internet Lag,Customer reported issue with internet,high
+TCK_172,1/1/2025 18:00,CUST_421,1,SITE_49,Gaming Lag,Customer reported issue with gaming,medium
+TCK_173,1/1/2025 9:00,CUST_289,1,SITE_20,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_174,1/4/2025 0:00,CUST_460,1,SITE_25,Gaming Lag,Customer reported issue with gaming,low
+TCK_175,1/2/2025 18:00,CUST_72,1,SITE_25,Gaming Lag,Customer reported issue with gaming,low
+TCK_176,1/1/2025 10:00,CUST_499,1,SITE_33,Gaming Lag,Customer reported issue with gaming,medium
+TCK_177,1/1/2025 6:00,CUST_119,1,SITE_7,Voice Call Issue,Customer reported issue with voice,high
+TCK_178,1/2/2025 19:00,CUST_489,1,SITE_39,SMS Issue,Customer reported issue with sms,low
+TCK_179,1/3/2025 2:00,CUST_16,1,SITE_50,WA Call Issue,Customer reported issue with wa_call,low
+TCK_180,1/2/2025 10:00,CUST_117,1,SITE_29,Voice Call Issue,Customer reported issue with voice,medium
+TCK_181,1/3/2025 22:00,CUST_96,1,SITE_25,Voice Call Issue,Customer reported issue with voice,low
+TCK_182,1/3/2025 0:00,CUST_152,1,SITE_6,SMS Issue,Customer reported issue with sms,high
+TCK_183,1/1/2025 9:00,CUST_79,1,SITE_6,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_184,1/1/2025 19:00,CUST_163,1,SITE_48,Voice Call Issue,Customer reported issue with voice,medium
+TCK_185,1/1/2025 13:00,CUST_483,1,SITE_6,Internet Lag,Customer reported issue with internet,medium
+TCK_186,1/3/2025 8:00,CUST_53,1,SITE_24,WA Call Issue,Customer reported issue with wa_call,high
+TCK_187,1/1/2025 11:00,CUST_230,1,SITE_12,Voice Call Issue,Customer reported issue with voice,low
+TCK_188,1/3/2025 23:00,CUST_53,1,SITE_33,Voice Call Issue,Customer reported issue with voice,high
+TCK_189,1/1/2025 11:00,CUST_48,1,SITE_23,SMS Issue,Customer reported issue with sms,low
+TCK_190,1/2/2025 17:00,CUST_150,1,SITE_25,Internet Lag,Customer reported issue with internet,medium
+TCK_191,1/3/2025 1:00,CUST_372,1,SITE_50,Internet Lag,Customer reported issue with internet,low
+TCK_192,1/2/2025 7:00,CUST_87,1,SITE_37,SMS Issue,Customer reported issue with sms,low
+TCK_193,1/3/2025 0:00,CUST_138,1,SITE_11,Coverage / Sinyal,Customer reported issue with coverage,medium
+TCK_194,1/2/2025 10:00,CUST_33,1,SITE_32,Coverage / Sinyal,Customer reported issue with coverage,high
+TCK_195,1/3/2025 7:00,CUST_154,1,SITE_18,Voice Call Issue,Customer reported issue with voice,medium
+TCK_196,1/1/2025 9:00,CUST_484,1,SITE_24,WA Call Issue,Customer reported issue with wa_call,high
+TCK_197,1/3/2025 15:00,CUST_101,1,SITE_39,SMS Issue,Customer reported issue with sms,medium
+TCK_198,1/1/2025 13:00,CUST_4,1,SITE_9,WA Call Issue,Customer reported issue with wa_call,medium
+TCK_199,1/2/2025 18:00,CUST_412,1,SITE_40,Voice Call Issue,Customer reported issue with voice,medium

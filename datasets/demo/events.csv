@@ -1,0 +1,101 @@
+event_id,date,site_id,type,description
+EVT_0,9/1/2025,SITE_1,concert,Konser musik besar
+EVT_1,9/1/2025,SITE_2,maintenance,Perawatan site rutin
+EVT_2,9/1/2025,SITE_3,government,Acara kenegaraan
+EVT_3,9/2/2025,SITE_1,concert,Festival musik
+EVT_4,9/2/2025,SITE_2,maintenance,Upgrade perangkat BTS
+EVT_5,9/2/2025,SITE_3,government,Kunjungan pejabat
+EVT_6,9/3/2025,SITE_4,concert,Konser pop lokal
+EVT_7,9/3/2025,SITE_5,maintenance,Cek antena dan kabel
+EVT_8,9/3/2025,SITE_1,government,Acara resmi kantor walikota
+EVT_9,9/4/2025,SITE_2,concert,Pertunjukan musik rock
+EVT_10,9/5/2025,SITE_2,concert,Konser jazz malam
+EVT_11,9/5/2025,SITE_3,maintenance,Perawatan perangkat
+EVT_12,9/5/2025,SITE_4,government,Acara kenegaraan
+EVT_13,9/6/2025,SITE_5,concert,Konser indie
+EVT_14,9/6/2025,SITE_1,maintenance,Upgrade perangkat
+EVT_15,9/6/2025,SITE_2,government,Kunjungan menteri
+EVT_16,9/7/2025,SITE_3,concert,Konser pop
+EVT_17,9/7/2025,SITE_4,maintenance,Cek perangkat
+EVT_18,9/7/2025,SITE_5,government,Acara resmi kantor
+EVT_19,9/8/2025,SITE_1,concert,Pertunjukan musik rakyat
+EVT_20,9/9/2025,SITE_2,concert,Konser jazz malam
+EVT_21,9/9/2025,SITE_3,maintenance,Perawatan perangkat
+EVT_22,9/9/2025,SITE_4,government,Acara kenegaraan
+EVT_23,9/10/2025,SITE_5,concert,Konser indie
+EVT_24,9/10/2025,SITE_1,maintenance,Upgrade perangkat
+EVT_25,9/10/2025,SITE_2,government,Kunjungan menteri
+EVT_26,9/11/2025,SITE_3,concert,Konser pop
+EVT_27,9/11/2025,SITE_4,maintenance,Cek perangkat
+EVT_28,9/11/2025,SITE_5,government,Acara resmi kantor
+EVT_29,9/12/2025,SITE_1,concert,Pertunjukan musik rakyat
+EVT_30,9/12/2025,SITE_2,maintenance,Perawatan perangkat
+EVT_31,9/12/2025,SITE_3,government,Acara kenegaraan
+EVT_32,9/13/2025,SITE_4,concert,Konser pop lokal
+EVT_33,9/13/2025,SITE_5,maintenance,Cek antena dan kabel
+EVT_34,9/13/2025,SITE_1,government,Acara resmi kantor walikota
+EVT_35,9/14/2025,SITE_2,concert,Pertunjukan musik rock
+EVT_36,9/15/2025,SITE_2,concert,Konser jazz malam
+EVT_37,9/15/2025,SITE_3,maintenance,Perawatan perangkat
+EVT_38,9/15/2025,SITE_4,government,Acara kenegaraan
+EVT_39,9/16/2025,SITE_5,concert,Konser indie
+EVT_40,9/16/2025,SITE_1,maintenance,Upgrade perangkat
+EVT_41,9/16/2025,SITE_2,government,Kunjungan menteri
+EVT_42,9/17/2025,SITE_3,concert,Konser pop
+EVT_43,9/17/2025,SITE_4,maintenance,Cek perangkat
+EVT_44,9/17/2025,SITE_5,government,Acara resmi kantor
+EVT_45,9/18/2025,SITE_1,concert,Pertunjukan musik rakyat
+EVT_46,9/18/2025,SITE_2,maintenance,Perawatan perangkat
+EVT_47,9/18/2025,SITE_3,government,Acara kenegaraan
+EVT_48,9/19/2025,SITE_4,concert,Konser pop lokal
+EVT_49,9/19/2025,SITE_5,maintenance,Cek antena dan kabel
+EVT_50,9/19/2025,SITE_1,government,Acara resmi kantor walikota
+EVT_51,9/20/2025,SITE_2,concert,Pertunjukan musik rock
+EVT_52,9/21/2025,SITE_2,concert,Konser jazz malam
+EVT_53,9/21/2025,SITE_3,maintenance,Perawatan perangkat
+EVT_54,9/21/2025,SITE_4,government,Acara kenegaraan
+EVT_55,9/22/2025,SITE_5,concert,Konser indie
+EVT_56,9/22/2025,SITE_1,maintenance,Upgrade perangkat
+EVT_57,9/22/2025,SITE_2,government,Kunjungan menteri
+EVT_58,9/23/2025,SITE_3,concert,Konser pop
+EVT_59,9/23/2025,SITE_4,maintenance,Cek perangkat
+EVT_60,9/23/2025,SITE_5,government,Acara resmi kantor
+EVT_61,9/24/2025,SITE_1,concert,Pertunjukan musik rakyat
+EVT_62,9/24/2025,SITE_2,maintenance,Perawatan perangkat
+EVT_63,9/24/2025,SITE_3,government,Acara kenegaraan
+EVT_64,9/25/2025,SITE_4,concert,Konser pop lokal
+EVT_65,9/25/2025,SITE_5,maintenance,Cek antena dan kabel
+EVT_66,9/25/2025,SITE_1,government,Acara resmi kantor walikota
+EVT_67,9/26/2025,SITE_2,concert,Pertunjukan musik rock
+EVT_68,9/27/2025,SITE_2,concert,Konser jazz malam
+EVT_69,9/27/2025,SITE_3,maintenance,Perawatan perangkat
+EVT_70,9/27/2025,SITE_4,government,Acara kenegaraan
+EVT_71,9/28/2025,SITE_5,concert,Konser indie
+EVT_72,9/28/2025,SITE_1,maintenance,Upgrade perangkat
+EVT_73,9/28/2025,SITE_2,government,Kunjungan menteri
+EVT_74,9/29/2025,SITE_3,concert,Konser pop
+EVT_75,9/29/2025,SITE_4,maintenance,Cek perangkat
+EVT_76,9/29/2025,SITE_5,government,Acara resmi kantor
+EVT_77,9/30/2025,SITE_1,concert,Pertunjukan musik rakyat
+EVT_78,9/30/2025,SITE_2,maintenance,Perawatan perangkat
+EVT_79,9/30/2025,SITE_3,government,Acara kenegaraan
+EVT_80,10/1/2025,SITE_4,concert,Konser pop lokal
+EVT_81,10/1/2025,SITE_5,maintenance,Cek antena dan kabel
+EVT_82,10/1/2025,SITE_1,government,Acara resmi kantor walikota
+EVT_83,10/2/2025,SITE_2,concert,Pertunjukan musik rock
+EVT_84,10/3/2025,SITE_2,concert,Konser jazz malam
+EVT_85,10/3/2025,SITE_3,maintenance,Perawatan perangkat
+EVT_86,10/3/2025,SITE_4,government,Acara kenegaraan
+EVT_87,10/4/2025,SITE_5,concert,Konser indie
+EVT_88,10/4/2025,SITE_1,maintenance,Upgrade perangkat
+EVT_89,10/4/2025,SITE_2,government,Kunjungan menteri
+EVT_90,10/5/2025,SITE_3,concert,Konser pop
+EVT_91,10/5/2025,SITE_4,maintenance,Cek perangkat
+EVT_92,10/5/2025,SITE_5,government,Acara resmi kantor
+EVT_93,10/6/2025,SITE_1,concert,Pertunjukan musik rakyat
+EVT_94,10/6/2025,SITE_2,maintenance,Perawatan perangkat
+EVT_95,10/6/2025,SITE_3,government,Acara kenegaraan
+EVT_96,10/7/2025,SITE_4,concert,Konser pop lokal
+EVT_97,10/7/2025,SITE_5,maintenance,Cek antena dan kabel
+EVT_98,10/7/2025,SITE_1,government,Acara resmi kantor walikota
+EVT_99,10/8/2025,SITE_2,concert,Pertunjukan musik rock

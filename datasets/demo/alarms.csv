@@ -1,0 +1,101 @@
+alarm_id,timestamp,site_id,severity,alarm_type,description
+ALM_0,9/1/2025 0:15,SITE_1,critical,CPRI,CPRI link down
+ALM_1,9/1/2025 0:30,SITE_2,major,VSWR,VSWR high
+ALM_2,9/1/2025 0:45,SITE_3,minor,Transport,Packet loss warning
+ALM_3,9/1/2025 1:00,SITE_1,critical,CPRI,CPRI link down
+ALM_4,9/1/2025 1:15,SITE_4,major,VSWR,VSWR high
+ALM_5,9/1/2025 1:30,SITE_5,minor,Transport,Latency spike
+ALM_6,9/1/2025 1:45,SITE_2,critical,CPRI,CPRI failure
+ALM_7,9/1/2025 2:00,SITE_3,major,VSWR,VSWR high
+ALM_8,9/1/2025 2:15,SITE_1,minor,Transport,Packet loss warning
+ALM_9,9/1/2025 2:30,SITE_4,critical,CPRI,CPRI link down
+ALM_10,9/1/2025 2:45,SITE_2,major,VSWR,VSWR high
+ALM_11,9/1/2025 3:00,SITE_3,minor,Transport,Packet loss warning
+ALM_12,9/1/2025 3:15,SITE_1,critical,CPRI,CPRI link down
+ALM_13,9/1/2025 3:30,SITE_4,major,VSWR,VSWR high
+ALM_14,9/1/2025 3:45,SITE_5,minor,Transport,Latency spike
+ALM_15,9/1/2025 4:00,SITE_2,critical,CPRI,CPRI failure
+ALM_16,9/1/2025 4:15,SITE_3,major,VSWR,VSWR high
+ALM_17,9/1/2025 4:30,SITE_1,minor,Transport,Packet loss warning
+ALM_18,9/1/2025 4:45,SITE_4,critical,CPRI,CPRI link down
+ALM_19,9/1/2025 5:00,SITE_5,major,VSWR,VSWR high
+ALM_20,9/1/2025 12:15,SITE_1,critical,CPRI,CPRI link down
+ALM_21,9/1/2025 12:30,SITE_2,major,VSWR,VSWR high
+ALM_22,9/1/2025 12:45,SITE_3,minor,Transport,Packet loss warning
+ALM_23,9/1/2025 13:00,SITE_4,critical,CPRI,CPRI link down
+ALM_24,9/1/2025 13:15,SITE_5,major,VSWR,VSWR high
+ALM_25,9/1/2025 13:30,SITE_1,minor,Transport,Latency spike
+ALM_26,9/1/2025 13:45,SITE_2,critical,CPRI,CPRI failure
+ALM_27,9/1/2025 14:00,SITE_3,major,VSWR,VSWR high
+ALM_28,9/1/2025 14:15,SITE_4,minor,Transport,Packet loss warning
+ALM_29,9/1/2025 14:30,SITE_5,critical,CPRI,CPRI link down
+ALM_30,9/1/2025 14:45,SITE_1,major,VSWR,VSWR high
+ALM_31,9/1/2025 15:00,SITE_2,minor,Transport,Latency spike
+ALM_32,9/1/2025 15:15,SITE_3,critical,CPRI,CPRI failure
+ALM_33,9/1/2025 15:30,SITE_4,major,VSWR,VSWR high
+ALM_34,9/1/2025 15:45,SITE_5,minor,Transport,Packet loss warning
+ALM_35,9/1/2025 16:00,SITE_1,critical,CPRI,CPRI link down
+ALM_36,9/1/2025 16:15,SITE_2,major,VSWR,VSWR high
+ALM_37,9/1/2025 16:30,SITE_3,minor,Transport,Latency spike
+ALM_38,9/1/2025 16:45,SITE_4,critical,CPRI,CPRI failure
+ALM_39,9/1/2025 17:00,SITE_5,major,VSWR,VSWR high
+ALM_40,9/1/2025 17:15,SITE_1,minor,Transport,Packet loss warning
+ALM_41,9/1/2025 17:30,SITE_2,critical,CPRI,CPRI link down
+ALM_42,9/1/2025 17:45,SITE_3,major,VSWR,VSWR high
+ALM_43,9/1/2025 18:00,SITE_4,minor,Transport,Latency spike
+ALM_44,9/1/2025 18:15,SITE_5,critical,CPRI,CPRI failure
+ALM_45,9/1/2025 18:30,SITE_1,major,VSWR,VSWR high
+ALM_46,9/1/2025 18:45,SITE_2,minor,Transport,Packet loss warning
+ALM_47,9/1/2025 19:00,SITE_3,critical,CPRI,CPRI link down
+ALM_48,9/1/2025 19:15,SITE_4,major,VSWR,VSWR high
+ALM_49,9/1/2025 19:30,SITE_5,minor,Transport,Latency spike
+ALM_50,9/1/2025 19:45,SITE_1,critical,CPRI,CPRI failure
+ALM_51,9/1/2025 20:00,SITE_2,major,VSWR,VSWR high
+ALM_52,9/1/2025 20:15,SITE_3,minor,Transport,Packet loss warning
+ALM_53,9/1/2025 20:30,SITE_4,critical,CPRI,CPRI link down
+ALM_54,9/1/2025 20:45,SITE_5,major,VSWR,VSWR high
+ALM_55,9/1/2025 21:00,SITE_1,minor,Transport,Latency spike
+ALM_56,9/1/2025 21:15,SITE_2,critical,CPRI,CPRI failure
+ALM_57,9/1/2025 21:30,SITE_3,major,VSWR,VSWR high
+ALM_58,9/1/2025 21:45,SITE_4,minor,Transport,Packet loss warning
+ALM_59,9/1/2025 22:00,SITE_5,critical,CPRI,CPRI link down
+ALM_60,9/1/2025 22:15,SITE_1,major,VSWR,VSWR high
+ALM_61,9/1/2025 22:30,SITE_2,minor,Transport,Latency spike
+ALM_62,9/1/2025 22:45,SITE_3,critical,CPRI,CPRI failure
+ALM_63,9/1/2025 23:00,SITE_4,major,VSWR,VSWR high
+ALM_64,9/1/2025 23:15,SITE_5,minor,Transport,Packet loss warning
+ALM_65,9/1/2025 23:30,SITE_1,critical,CPRI,CPRI link down
+ALM_66,9/1/2025 23:45,SITE_2,major,VSWR,VSWR high
+ALM_67,9/2/2025 0:00,SITE_3,minor,Transport,Latency spike
+ALM_68,9/2/2025 0:15,SITE_4,critical,CPRI,CPRI failure
+ALM_69,9/2/2025 0:30,SITE_5,major,VSWR,VSWR high
+ALM_70,9/2/2025 0:45,SITE_1,minor,Transport,Packet loss warning
+ALM_71,9/2/2025 1:00,SITE_2,critical,CPRI,CPRI link down
+ALM_72,9/2/2025 1:15,SITE_3,major,VSWR,VSWR high
+ALM_73,9/2/2025 1:30,SITE_4,minor,Transport,Latency spike
+ALM_74,9/2/2025 1:45,SITE_5,critical,CPRI,CPRI failure
+ALM_75,9/2/2025 2:00,SITE_1,major,VSWR,VSWR high
+ALM_76,9/2/2025 2:15,SITE_2,minor,Transport,Packet loss warning
+ALM_77,9/2/2025 2:30,SITE_3,critical,CPRI,CPRI link down
+ALM_78,9/2/2025 2:45,SITE_4,major,VSWR,VSWR high
+ALM_79,9/2/2025 3:00,SITE_5,minor,Transport,Latency spike
+ALM_80,9/2/2025 3:15,SITE_1,critical,CPRI,CPRI failure
+ALM_81,9/2/2025 3:30,SITE_2,major,VSWR,VSWR high
+ALM_82,9/2/2025 3:45,SITE_3,minor,Transport,Packet loss warning
+ALM_83,9/2/2025 4:00,SITE_4,critical,CPRI,CPRI link down
+ALM_84,9/2/2025 4:15,SITE_5,major,VSWR,VSWR high
+ALM_85,9/2/2025 4:30,SITE_1,minor,Transport,Latency spike
+ALM_86,9/2/2025 4:45,SITE_2,critical,CPRI,CPRI failure
+ALM_87,9/2/2025 5:00,SITE_3,major,VSWR,VSWR high
+ALM_88,9/2/2025 5:15,SITE_4,minor,Transport,Packet loss warning
+ALM_89,9/2/2025 5:30,SITE_5,critical,CPRI,CPRI link down
+ALM_90,9/2/2025 5:45,SITE_1,major,VSWR,VSWR high
+ALM_91,9/2/2025 6:00,SITE_2,minor,Transport,Latency spike
+ALM_92,9/2/2025 6:15,SITE_3,critical,CPRI,CPRI failure
+ALM_93,9/2/2025 6:30,SITE_4,major,VSWR,VSWR high
+ALM_94,9/2/2025 6:45,SITE_5,minor,Transport,Packet loss warning
+ALM_95,9/2/2025 7:00,SITE_1,critical,CPRI,CPRI link down
+ALM_96,9/2/2025 7:15,SITE_2,major,VSWR,VSWR high
+ALM_97,9/2/2025 7:30,SITE_3,minor,Transport,Latency spike
+ALM_98,9/2/2025 7:45,SITE_4,critical,CPRI,CPRI failure
+ALM_99,9/2/2025 8:00,SITE_5,major,VSWR,VSWR high

@@ -1,0 +1,418 @@
+## 💡 Projek AI: **"VIP Complaint Prediction & Root Cause AI"**
+
+### 📌 Latar Belakang
+
+VIP & Enterprise user itu ga bisa nunggu komplain ditanganin. Kalau mereka ngalamin internet lemot, WA call putus2, atau voice drop, impact-nya langsung besar (kontrak, revenue, bahkan reputasi operator).
+Saat ini handling masih **reaktif** (nunggu komplain masuk → baru direspon). Harusnya kita bisa **proaktif**: sebelum komplain masuk, sistem udah tahu potensi issue dan kasih early warning.
+
+---
+
+### 🎯 Tujuan
+
+1. **Prediksi** kemungkinan komplain akan terjadi di site / cluster tertentu (early warning system).
+2. **Identifikasi root cause** otomatis berdasarkan pola KPI (misalnya internet lemot → PRB congestion; WA call gagal → high latency; voice putus2 → UL interference).
+3. **Prioritization** → kasih alert ke team sebelum VIP benar2 nge-complain.
+
+---
+
+### 🔑 X (Features) → dari data monitoring yg lu bilang lengkap
+
+* **Radio KPI**:
+
+  * RSRP, RSRQ, SINR
+  * PRB DL/UL utilization
+  * Max user / active user
+  * UL interference
+  * Handover success rate
+  * Call setup success rate
+* **Core & Transport KPI**:
+
+  * Packet loss
+  * Latency
+  * CPRI/VSWR alarm
+  * TNL availability
+* **Service-Specific KPI**:
+
+  * WhatsApp success ratio, VoLTE call drop rate, SMS success ratio, Gaming latency
+* **Event/External**:
+
+  * Maintenance schedule
+  * Big event (konser, acara kenegaraan)
+  * Weather (opsional kalau bisa integrasi)
+
+---
+
+### 🎯 y (Target / Output)
+
+* **Level 1: Komplain Prediction (Binary)** → Apakah site/cluster ini berpotensi jadi komplain VIP dalam 24 jam? (Yes/No)
+* **Level 2: Komplain Category (Multiclass)** → Prediksi jenis komplain:
+
+  * Internet Lemot
+  * Coverage/Sinyal
+  * WA Call Issue
+  * Voice Call Issue
+  * SMS Issue
+  * Gaming Lag
+* **Level 3: Root Cause Recommendation** → Mapping hasil prediksi ke solusi:
+
+  * High PRB → kapasitas
+  * Low RSRP → coverage
+  * High UL interference → quality issue
+  * Transport packet loss → core/transport
+
+---
+
+### 🚀 Nilai Tambah
+
+* Bisa dipresentasikan ke atasan sebagai **AI Early Warning System for VIP Complaint**.
+* Jadi *shift* dari **reaktif → proaktif**.
+* Kalau jalan, bisa di-scale ke **all customer complaint prediction**, bukan cuma VIP.
+
+---
+
+💭 Gw kepikiran bisa dibagi jadi **2 fase**:
+
+1. **Phase 1 (Quick Win)** → build ML model (classification) buat prediksi potensi komplain berdasarkan KPI harian.
+2. **Phase 2 (Ambisius)** → tambah NLP buat analisis tiket komplain (misal teks “internet lemot banget” → auto mapping ke KPI pattern).
+
+
+-------------------------------------------------------------------------------------------
+
+# Arsitektur Tingkat Tinggi (Overview)
+
+**Goal:** Deteksi dini (24h ahead) potensi komplain VIP/Enterprise → klasifikasi jenis komplain → rekomendasi root cause & aksi otomatis / semi-otomatis.
+Flow:
+**Data ingestion (KPI, alarm, tiket, topology)** → **Feature engineering (batch + streaming)** → **Modeling (prediksi + root cause + anomaly)** → **Serving & Alerting (dashboard, notifikasi, OSS ticket)** → **Monitoring & retrain loop**.
+
+---
+
+# 1) Input (data yang dibutuhkan)
+
+Semua data waktu-nyata/historis yang lu bilang ada (onsite ga ada — gap noted).
+
+**A. Timeseries KPI (per site / sector / cell) — granularity: 1 min / 5 min / 15 min**
+
+* RSRP, RSRQ, SINR
+* PRB DL/UL utilization, PRB high usage %
+* Active user, Max user
+* Throughput DL/UL (avg, p50, p95)
+* Handover success/fail rates
+* Call setup success rate, call drop rate
+* UL interference, noise floor
+* Packet loss, RTT/latency
+* TNL/transmission metrics (packet loss, jitter)
+* Alarm counts (per severity), alarm types (VSWR, CPRI, etc.)
+
+**B. Service-specific metrics**
+
+* WhatsApp call success/reconnect rates, VoIP/VoLTE metrics
+* SMS success ratio
+* Gaming KPIs (latency p50/p95, jitter)
+
+**C. Ticketing / Complaint logs**
+
+* ticket\_id, timestamp, customer\_id (VIP flag), text, category (if any), mapped\_site\_id (if available), severity, resolution\_timestamp
+
+**D. Topology & Metadata**
+
+* site\_id, sector\_id, lat/lon, azimuth, electrical/mechanical tilt, antenna type, carrier/frequency, capacity config
+* VIP → mapping customer → site list / SLA info
+
+**E. Events / External**
+
+* Planned maintenance windows
+* Events (concerts) calendar
+* Weather feed (optional)
+* OSS/BSS change logs (config changes)
+
+---
+
+# 2) Output (yang diharapkan)
+
+**Per site/cluster/per VIP (time horizon 24h, configurable):**
+
+1. **Risk score** (0–1) → kemungkinan komplain dalam window.
+2. **Binary predicted: Komplain? (Y/N)**
+3. **Predicted category (multiclass)** → internet lemot / coverage / WA call / voice / sms / gaming
+4. **Root cause(s) (top-k)** → e.g., High PRB (congestion), Low RSRP (coverage), Transport packet loss, UL interference
+5. **Recommended action & playbook** → e.g., short term: reduce PRB demand via QCI tweak / traffic shaping; medium: change tilt; long term: capacity planning
+6. **Confidence + explainability (top contributing features)** → SHAP summary
+7. **Auto-ticket suggestion** (create ticket in OSS/JIRA with suggested priority + playbook)
+
+---
+
+# 3) Pipeline & Proses Detil
+
+## A. Ingest & Storage
+
+* **Streaming ingestion**: Kafka / Confluent (topics: kpi, alarms, tickets).
+* **Batch landing**: Parquet files on object store (S3 / MinIO) partitioned by date/site.
+* **Timeseries DB**: TimescaleDB or InfluxDB for fast queries & Grafana dashboards.
+* **Data lake**: HDFS / S3 for historical storage.
+* **Metadata & Feature Store**: Feast (untuk online features) atau proprietary feature store.
+
+## B. Data Validation
+
+* great\_expectations untuk schema/consistency checks (missing rates, outlier checks).
+* Alerts when > threshold missing.
+
+## C. Labeling pipeline (cara bikin y)
+
+* **Define positive window**: Jika ada ticket from VIP mapped to site within T\_window (e.g., next 24 hours) → label positive for preceding feature window (e.g., past 1h / 6h features).
+* **Mapping ticket → site**: first preference: explicit site\_id in ticket; else map by geolocation of customer or by serving cell ID in network logs within ticket time.
+* **Class label**: derive category from ticket text using regex + simple NLP (TF-IDF classifier) or BERT for better accuracy.
+* **Negative sampling**: sample time windows where no ticket occurred.
+
+> Hati-hati: **avoid data leakage** — only use features prior to label timestamp. Use time-based splits.
+
+## D. Feature Engineering
+
+* Rolling stats: mean/p95/std of RSRP, PRB, SINR over windows (5m, 15m, 1h, 6h).
+* Delta features: change vs baseline (last hour vs 24h avg).
+* Event flags: maintenance, event\_day, weather.
+* Categorical encodings: site type, band, antenna.
+* Derived ratios: PRB\_util/active\_user, throughput\_per\_user.
+* One-hot / embedding for site clusters.
+
+## E. Modeling (algos)
+
+* **Binary prediction (komplain dalam 24h)**: LightGBM / XGBoost (tabular), or CatBoost (categorical heavy).
+* **Multiclass (jenis komplain)**: LightGBM multiclass / or multihead NN.
+* **Root cause classification**: multi-label classifier or decision-tree + SHAP to map features → cause.
+* **Sequence/Temporal models**: LSTM / TCN / Transformer time series if sequential patterns important. (Use for per-site anomaly forecasting).
+* **Anomaly detection (unsupervised)**: Autoencoder / IsolationForest for new unseen faults.
+* **NLP ticket categorization**: fine-tuned DistilBERT / small BERT or TF-IDF + SVM (tradeoff speed vs accuracy).
+
+## F. Explainability & Mapping ke tindakan
+
+* Use **SHAP** to show top features per prediction.
+* Map feature patterns (rulebook) to **playbook actions** (human readable).
+* Keep rule-based fallback: if model confidence < threshold → suggest human review.
+
+## G. Serving & Integration
+
+* **Model server**: Seldon / BentoML / FastAPI containerized.
+* **Real-time scoring**: Kafka consumer → feature assembler (online features from Feast) → model → push risk result to alerts DB + Grafana + OSS ticket API.
+* **Batch scoring**: nightly batch for sites summary (Parquet output).
+* **UI / Dashboard**: Grafana (map + panels) + lightweight React triage app for NVEEH (list of alerts, top features, recommended action, create ticket).
+* **Notifications**: Slack / MS Teams / PagerDuty / email + OSS ticket integration.
+
+## H. Monitoring & Retraining
+
+* **Model monitoring**: log predictions + ground truth, compute performance metrics, drift detection (PSI, KS test), prediction distribution.
+* **Data monitoring**: missingness, schema changes.
+* **Retrain triggers**: periodic (weekly/monthly) + drift threshold triggers.
+* **Model registry**: MLflow (experiment tracking, model versioning).
+* **A/B / Canary**: shadow mode → then canary 5% traffic → full rollout.
+
+---
+
+# 4) Tools / Libraries yang gw rekomendasiin
+
+## Data & Infra
+
+* Kafka / Confluent (streaming)
+* TimescaleDB / InfluxDB (timeseries)
+* S3 / MinIO (data lake)
+* Parquet, Apache Spark (batch feature gen)
+* Feast (feature store)
+* Airflow / Prefect / Argo (orchestration)
+
+## ML & Analytics
+
+* Python, pandas, numpy, pyarrow
+* scikit-learn, xgboost, lightgbm, catboost
+* pytorch / tensorflow (jika pake LSTM/Transformer)
+* tsfresh / tslearn (time series features)
+* Prophet / statsmodels (seasonal baseline)
+* SHAP, LIME (explainability)
+* MLflow (tracking & registry), DVC or lakeFS (data versioning)
+
+## Serving & Monitoring
+
+* Docker, Kubernetes
+* Seldon Core / BentoML / KFServing
+* Prometheus + Grafana (ops metrics)
+* ELK stack (Elasticsearch, Logstash, Kibana) for logs & search
+* PagerDuty / Slack integrations
+
+## Dev & QA
+
+* Git + GitHub/GitLab CI, pytest, black, pre-commit
+* great\_expectations (data tests), pytest for unit tests
+
+---
+
+# 5) Step-by-step Implementation Plan (detailed)
+
+Gw bagi jadi fase supaya lo gampang present di meeting.
+
+## Phase 0 — Persiapan & discovery
+
+1. Data inventory & access: pastikan lu bisa akses KPI timeseries, ticket logs, topology. Daftar owner & API endpoints.
+2. Small ETL: stream 1-day worth of KPI to test topic + store on parquet.
+3. Define label rules & get sample labeled days (historical VIP tickets).
+
+## Phase 1 — PoC (quick win)
+
+1. **Labeling script**: implement mapping ticket → site + derive binary label (komplain next 24h).
+2. **Feature set**: compute basic rolling features (1h mean, p95, delta vs 24h).
+3. **Baseline model**: LightGBM binary classifier.
+4. **Offline eval**: time-split CV (walk-forward), metrics: PR-AUC, recall\@k, precision for VIP.
+5. **Simple dashboard**: Grafana panel & a CSV output per day.
+6. **Deliverable**: demo: map view + top 20 sites predicted next 24h.
+
+## Phase 2 — Expand models & root cause
+
+1. Multiclass model for problem type.
+2. Root cause classifier + SHAP mapping → generate top root causes.
+3. NLP ticket categorizer for auto labeling and enrichment.
+4. Integrate playbook mapping.
+
+## Phase 3 — Real-time & productionize
+
+1. Productionize ingestion (Kafka), feature store (Feast) for online features.
+2. Model serving (Seldon) & online scorer.
+3. Alerting: Slack/PagerDuty + auto OSS ticket creation prototype.
+4. Monitoring dashboards + drift detection + retrain pipeline (Airflow).
+
+## Phase 4 — Advanced features
+
+1. Sequence models (LSTM/TCN) for site forecasting.
+2. Active learning loop: operator feedback used to retrain.
+3. Expand to non-VIP customers.
+
+---
+
+# 6) Labeling & Evaluation Details (penting)
+
+* **Label window**: e.g., use features from t-1h..t to predict ticket in t..t+24h. Tune window.
+* **Class imbalance**: VIP tickets rare → use class weighting, focal loss, or oversample positives (SMOTE with caution for time series).
+* **Validation**: rolling time window CV (no random shuffle). Evaluate over multiple time ranges (weekday/weekend, event days).
+* **Metrics**: PR-AUC (main), recall\@k (business: top N alerts), precision at high confidence, per-class F1 for multiclass.
+
+---
+
+# 7) Mapping prediction → aksi (example playbook)
+
+| Predicted cause         |                Evidence (features) | Recommended action                                                       |
+| ----------------------- | ---------------------------------: | ------------------------------------------------------------------------ |
+| Capacity (high PRB)     | PRB\_util > 85%, high active\_user | Short term: QCI tweak, rate limit non-VIP; Medium: schedule capacity add |
+| Coverage                |          low RSRP median, low SINR | Check antenna tilt/azimuth; recommend mechanical/electrical tilt change  |
+| Transport (packet loss) |                  packet\_loss > 1% | Escalate to transport team; check TNL links                              |
+| Interference            |               high UL interference | check neighbor cells, UL power, monitor UG interference alarms           |
+| OSS/config change       |            config change log at t0 | Rollback or investigate recent config                                    |
+
+---
+
+# 8) Risks & Mitigations
+
+* **Label noise** (ticket mapping wrong) → mitigation: use conservative mapping + operator verification + NLP categorizer.
+* **Data quality issues** → great\_expectations + data monitors.
+* **False positives** → threshold tuning, show confidence & explainability, human-in-the-loop.
+* **Model drift** → automated drift detection + scheduled retrain.
+* **Privacy/Compliance** → mask customer PII, access control.
+
+---
+
+# 9) Quick Tech Stack Recommendation (default)
+
+* **MVP infra**: Kafka, Spark, S3, TimescaleDB, Airflow, MLflow, Grafana, Seldon.
+* **Lang & libs**: Python, pandas, scikit-learn, lightgbm, pytorch, SHAP.
+* **UI**: Grafana + React triage app (optional).
+
+---
+
+# 10) Deliverables tiap milestone (what to show at meeting)
+
+* PoC: notebook + daily prediction CSV + Grafana map + one paged ROI slide.
+* Phase 2: model explainability report + action playbooks + demo of auto ticket suggestion.
+* Prod: live dashboard, alert pipeline, SLOs for prediction precision/recall, retrain automation.
+
+-----
+
+https://chatgpt.com/share/68c69bb7-747c-8008-b4be-6a9dd09e30d0
+
+------------------------------------------------------------------------------------------
+
+dataset:
+
+- kpi_timeseries.csv (granularity 15 menit) Isinya kombinasi Radio KPI, Core/Transport KPI, dan Service KPI. Header: timestamp, site_id, sector, rsrp, rsrq, sinr, prb_dl_util_pct, prb_ul_util_pct, active_user, max_user, ul_interference_db, ho_success_rate, cssr, packet_loss_pct, latency_ms, cpri_alarm, vswr_alarm, tnl_availability_pct, wa_success_ratio, volte_drop_rate, sms_success_ratio, gaming_latency_ms, throughput_dl_mbps 
+- alarms.csv Fokus ke alarm teknis (CPRI, VSWR, transport). Header: alarm_id, timestamp, site_id, severity, alarm_type, description 
+- tickets.csv Komplain VIP/enterprise (text + kategori). Header: ticket_id, timestamp, customer_id, vip, site_id, category_label, text, severity_reported (kategori bisa: internet, coverage, wa_call, voice, sms, gaming) 
+- topology.csv Metadata site buat mapping. Header: site_id, lat, lon, azimuth_A, tilt_A, antenna_type, band, sector_count 
+- events.csv Buat external features: konser, maintenance, event nasional. Header: event_id, date, site_id, type, description 
+- weather.csv Bisa di-join ke site_id via koordinat, dummy dulu isi hujan/cerah. Header: date, lat, lon, weather, rain_mm, temperature_c
+
+------------------------------------------------------------------------------------------
+
+hasil level 1
+
+	Model	Accuracy	Precision	Recall	F1 Score	Confusion Matrix
+0	XGB	0.84	0.83	0.93	0.88	[[2306, 980], [398, 4956]]
+1	Gradient Boosting	0.84	0.83	0.93	0.88	[[2282, 1004], [381, 4973]]
+2	CatBoost	0.84	0.83	0.93	0.88	[[2250, 1036], [364, 4990]]
+3	LGBM	0.83	0.82	0.93	0.87	[[2212, 1074], [373, 4981]]
+4	Random Forest	0.83	0.86	0.86	0.86	[[2548, 738], [733, 4621]]
+5	Decision Tree	0.80	0.84	0.85	0.84	[[2420, 866], [824, 4530]]
+6	KNN	0.80	0.82	0.87	0.85	[[2257, 1029], [677, 4677]]
+7	Logistic Regression	0.65	0.67	0.88	0.76	[[959, 2327], [654, 4700]]
+
+hasil model 2
+
+
+Model	Accuracy	Precision	Recall	F1 Score
+0	Random Forest	0.70	0.72	0.70	0.71
+1	LGBM	0.70	0.75	0.70	0.70
+2	Gradient Boosting	0.70	0.74	0.70	0.70
+3	XGB	0.69	0.74	0.69	0.69
+4	CatBoost	0.67	0.73	0.67	0.67
+5	Decision Tree	0.67	0.67	0.67	0.67
+6	KNN	0.59	0.66	0.59	0.59
+7	Logistic Regression	0.31	0.41	0.31	0.30
+
+------------------------------------------------------------------------------------------
+
+### 1. **Sequential** – untuk data yang punya urutan/nilai numerik
+
+* `px.colors.sequential.Cividis`
+* `px.colors.sequential.Viridis`
+* `px.colors.sequential.Plasma`
+* `px.colors.sequential.Magma`
+* `px.colors.sequential.Inferno`
+* `px.colors.sequential.Blues`
+* `px.colors.sequential.Greens`
+* `px.colors.sequential.Reds`
+
+---
+
+### 2. **Diverging** – untuk data yang punya nilai positif & negatif
+
+* `px.colors.diverging.PiYG`
+* `px.colors.diverging.RdYlGn`
+* `px.colors.diverging.RdBu`
+* `px.colors.diverging.BrBG`
+* `px.colors.diverging.PRGn`
+
+---
+
+### 3. **Categorical / Qualitative** – untuk data kategori
+
+* `px.colors.qualitative.Safe` /
+* `px.colors.qualitative.Bold`
+* `px.colors.qualitative.Set1` /
+* `px.colors.qualitative.Set2` /
+* `px.colors.qualitative.D3`
+* `px.colors.qualitative.Dark24`
+
+------------------------------------------------------------------------------------------
+
+AI-powered system predicting VIP network complaints by analyzing KPI timeseries, alarms, tickets, topology, events, and weather data, enabling proactive root-cause detection and service optimization for telecom networks.
+
+
+git init
+git remote add origin https://github.com/cerdasbersamadamelia/VIP-Complaint-Prediction
+git remote -v
+git add .
+git commit -m "my first commit eaaa"
+git push origin master

@@ -1,0 +1,15 @@
+pandas
+numpy
+matplotlib
+folium
+scikit-learn
+imbalanced-learn
+lazypredict
+xgboost
+catboost
+lightgbm
+joblib
+scipy
+tqdm
+python-pptx
+reportlab
