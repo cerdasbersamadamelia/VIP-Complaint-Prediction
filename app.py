@@ -83,25 +83,22 @@ row1 = st.columns(3)
 # Site Location Map
 with row1[0]:
     st.subheader('Site Location Map')
-    if {'latitude', 'longitude', 'site_id', 'pred_24h'}.issubset(filtered_df.columns) and not filtered_df.empty:
-        site_summary = filtered_df.groupby(['site_id', 'latitude', 'longitude', 'pred_24h']).size().reset_index(name='complaint_count')
-        color_map = {'Yes': 'red', 'No': 'green'}
+    # if {'latitude', 'longitude', 'site_id', 'pred_24h'}.issubset(filtered_df.columns) and not filtered_df.empty:
+    #     site_summary = filtered_df.groupby(['site_id', 'latitude', 'longitude', 'pred_24h']).size().reset_index(name='complaint_count')
+    #     color_map = {'Yes': 'red', 'No': 'green'}
 
-        print(site_summary.head())
-        print(site_summary.dtypes)
-
-        fig_map = px.scatter_mapbox(
-            site_summary,
-            lat='latitude', lon='longitude',
-            size='complaint_count',
-            color='pred_24h',
-            color_discrete_map=color_map,
-            hover_name='site_id',
-            hover_data={'complaint_count': True, 'latitude': False, 'longitude': False},
-            zoom=10, mapbox_style='open-street-map'
-        )
-        fig_map.update_layout(legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5), height=200, margin=dict(t=0,b=0,l=0,r=0))
-        st.plotly_chart(fig_map, use_container_width=True, config={"scrollZoom": True})
+    #     fig_map = px.scatter_mapbox(
+    #         site_summary,
+    #         lat='latitude', lon='longitude',
+    #         size='complaint_count',
+    #         color='pred_24h',
+    #         color_discrete_map=color_map,
+    #         hover_name='site_id',
+    #         hover_data={'complaint_count': True, 'latitude': False, 'longitude': False},
+    #         zoom=10, mapbox_style='open-street-map'
+    #     )
+    #     fig_map.update_layout(legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5), height=200, margin=dict(t=0,b=0,l=0,r=0))
+    #     st.plotly_chart(fig_map, use_container_width=True, config={"scrollZoom": True})
     else:
         st.info("No data.")
 
