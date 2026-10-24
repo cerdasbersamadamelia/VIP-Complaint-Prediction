@@ -99,8 +99,8 @@ with row1[0]:
     #     )
     #     fig_map.update_layout(legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5), height=200, margin=dict(t=0,b=0,l=0,r=0))
     #     st.plotly_chart(fig_map, use_container_width=True, config={"scrollZoom": True})
-    else:
-        st.info("No data.")
+    # else:
+    #     st.info("No data.")
 
 # Sub Root Cause Hierarchy
 with row1[1]:
