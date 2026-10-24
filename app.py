@@ -86,6 +86,10 @@ with row1[0]:
     if {'latitude', 'longitude', 'site_id', 'pred_24h'}.issubset(filtered_df.columns) and not filtered_df.empty:
         site_summary = filtered_df.groupby(['site_id', 'latitude', 'longitude', 'pred_24h']).size().reset_index(name='complaint_count')
         color_map = {'Yes': 'red', 'No': 'green'}
+
+        print(site_summary.head())
+        print(site_summary.dtypes)
+
         fig_map = px.scatter_mapbox(
             site_summary,
             lat='latitude', lon='longitude',
