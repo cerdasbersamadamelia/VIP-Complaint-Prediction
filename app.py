@@ -128,7 +128,7 @@ with row1[2]:
     st.subheader('Complaint Trend (per hour)')
     if 'timestamp' in filtered_df.columns and not filtered_df.empty:
         trend = filtered_df.copy()
-        trend['hour'] = trend['timestamp'].dt.floor('H')
+        trend['hour'] = trend['timestamp'].dt.floor('hour')
         hourly = trend.groupby('hour')['pred_24h'].apply(lambda x: (x=='Yes').sum()).reset_index()
         hourly.columns = ['hour','complaints']
 
